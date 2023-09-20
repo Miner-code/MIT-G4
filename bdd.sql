@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mar. 19 sep. 2023 à 14:46
+-- Généré le : mer. 20 sep. 2023 à 08:45
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -29,7 +29,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `num_com` int(2) NOT NULL,
+  `num_com` int(2) NOT NULL AUTO_INCREMENT,
   `num_imp` int(2) NOT NULL,
   `cont_com` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`num_com`),
@@ -44,11 +44,19 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 
 DROP TABLE IF EXISTS `cursus`;
 CREATE TABLE IF NOT EXISTS `cursus` (
-  `num_cursus` int(2) NOT NULL,
+  `num_cursus` int(2) NOT NULL AUTO_INCREMENT,
   `libele_cursus` varchar(128) NOT NULL,
   `spe_cursus` varchar(128) NOT NULL,
   PRIMARY KEY (`num_cursus`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+
+--
+-- Déchargement des données de la table `cursus`
+--
+
+INSERT INTO `cursus` (`num_cursus`, `libele_cursus`, `spe_cursus`) VALUES
+(1, 'BTS SIO', 'SLAM'),
+(2, 'BTS SIO', 'SISR');
 
 -- --------------------------------------------------------
 
@@ -58,7 +66,7 @@ CREATE TABLE IF NOT EXISTS `cursus` (
 
 DROP TABLE IF EXISTS `etablissement`;
 CREATE TABLE IF NOT EXISTS `etablissement` (
-  `num_etab` int(2) NOT NULL,
+  `num_etab` int(2) NOT NULL AUTO_INCREMENT,
   `num_Ville` int(2) NOT NULL,
   `nom_etab` varchar(128) DEFAULT NULL,
   `adresse_etab` varchar(128) DEFAULT NULL,
@@ -74,11 +82,12 @@ CREATE TABLE IF NOT EXISTS `etablissement` (
 
 DROP TABLE IF EXISTS `impression`;
 CREATE TABLE IF NOT EXISTS `impression` (
-  `num_imp` int(2) NOT NULL,
+  `num_imp` int(2) NOT NULL AUTO_INCREMENT,
   `num_Theme` int(2) NOT NULL,
   `num_user` int(2) NOT NULL,
   `titre_imp` varchar(128) NOT NULL,
   `contenu_imp` varchar(255) NOT NULL,
+  `date_imp` date NOT NULL,
   PRIMARY KEY (`num_imp`),
   KEY `FK_Impression_Theme` (`num_Theme`),
   KEY `FK_Impression_User` (`num_user`)
@@ -107,7 +116,7 @@ CREATE TABLE IF NOT EXISTS `participer` (
 
 DROP TABLE IF EXISTS `theme`;
 CREATE TABLE IF NOT EXISTS `theme` (
-  `num_theme` int(2) NOT NULL,
+  `num_theme` int(2) NOT NULL AUTO_INCREMENT,
   `libele_theme` varchar(128) DEFAULT NULL,
   PRIMARY KEY (`num_theme`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -120,7 +129,7 @@ CREATE TABLE IF NOT EXISTS `theme` (
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `num_user` int(2) NOT NULL,
+  `num_user` int(2) NOT NULL AUTO_INCREMENT,
   `num_etab` int(2) NOT NULL,
   `nom_user` char(32) NOT NULL,
   `prenom_user` char(32) NOT NULL,
@@ -141,11 +150,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 DROP TABLE IF EXISTS `ville`;
 CREATE TABLE IF NOT EXISTS `ville` (
-  `num_ville` int(2) NOT NULL,
+  `num_ville` int(2) NOT NULL AUTO_INCREMENT,
   `nom_ville` char(32) DEFAULT NULL,
   `cp_ville` int(5) DEFAULT NULL,
   PRIMARY KEY (`num_ville`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
 --
 -- Contraintes pour les tables déchargées
