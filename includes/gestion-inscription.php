@@ -4,45 +4,25 @@ if (isset($_POST['submit'])){
 
     $validation = True;
 
-    $nom = $_POST['nom'];
-    $prenom = $_POST['prenom'];
-    $mail = $_POST['mail'];
-    $grade = $_POST['grade'];
-    $pseudo = $_POST['pseudo'];
-    $siret = '';
-    
-
-    if(strlen($nom) < 3 && strlen($nom) > 15){ $validation = False; }
-
-    if(strlen($prenom) < 3 && strlen($prenom) > 15){ $validation = False; }
-
-    if(strlen($pseudo) < 3 && strlen($pseudo) > 15){ $validation = False; }
-
-    if(filter_var($mail, FILTER_VALIDATE_EMAIL) == False) { $validation = False; }
-
-    if($grade != 'photographe' && $grade != 'client'){ $validation = False; }
+    $nom_user = $_POST['nom'];
+    $prenom_user = $_POST['prenom'];
+    $mail_user = $_POST['mail'];
+    $dtn_user = $_POST['dtn'];
+    if (isset($_POST['date_obtention'])) {
+        $date_obtention = $_POST['date_obtention'];
+    }
+    if (isset($_POST['nom_etab'])) {
+        $nom_etab = $_POST['nom_etab'];
+        $nom_ville = $_POST['nom_ville'];
+        $cp_ville = $_POST['cp_ville'];
+        $adresse_etab = $_POST['adresse_etab'];
+    }
 
     //* Vérification des doublons d'adresse mail
     $req = $bdd->prepare("SELECT * FROM user WHERE mail = '$mail'");
     $req->execute();
     $result = $req->rowCount();
     if($result > 0){ $validation = False; $mes_error = '<br/>Cette adresse mail est déjà utilisé.'; }
-
-    //* Vérification des doublons de pseudo
-    $req = $bdd->prepare("SELECT * FROM user WHERE pseudo = '$pseudo'");
-    $req->execute();
-    $result = $req->rowCount();
-    if($result > 0){ $validation = False; $mes_error = '<br/>Ce pseudo est déjà utilisé.'; }
-
-    //* Vérification des doublons de num SIRET
-    if(!empty($_POST['siret'])){ 
-        $siret = $_POST['siret']; 
-
-        $req = $bdd->prepare("SELECT * FROM user WHERE SIRET = '$siret'");
-        $req->execute();
-        $result = $req->rowCount();
-        if($result > 0){ $validation = False; $mes_error = '<br/>Ce numéro de SIRET est déjà utilisé.'; }
-    }
 
     if($_POST['password1'] != $_POST['password2']){ $validation = False; $mes_error = '<br/>Les mots de passe ne corresponde pas.'; }
 
@@ -54,31 +34,20 @@ if (isset($_POST['submit'])){
         //* Renommage de l'image et ajout du chemin
             $file_name = $_FILES['img_profil']['name'];
             $ext_img = ".".strtolower(substr(strrchr($file_name, "."), 1));
-            $chemin_image = "upload/user/".$pseudo.$ext_img;
+            $chemin_image = "upload/user/".$nom_user.'-'.$prenom_user.$ext_img;
             $tmp_img = $_FILES['img_profil']['tmp_name'];
             move_uploaded_file($tmp_img, $chemin_image);
         }
 
-        $mdp = sha1($_POST['password1']);   
-        //* Si le comte est photographe il faut une validation de l'admin
-        if($grade == 'photographe'){
-            $etat = 'attValid';
-        }
-        if($grade == 'client'){
-            $etat = 'valid';
-        }
+        $mdp = sha256($_POST['password1']);   
+
         //* Ajout bdd
-        $req = $bdd->prepare("INSERT INTO user (nom, prenom, pseudo, img_profil, mail, mdp, grade, SIRET, etat) 
-                            VALUES (:nom, :prenom, :pseudo, :img_profil, :mail, :mdp, :grade, :siret, :etat)");
+        $req = $bdd->prepare("INSERT INTO user (nom_user, prenom_user, mail_user, dtn_user, mdp_user, img_user) 
+                            VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user)");
+
+                            // ! REQUETE A FAIRE
         $req->bindValue(':nom', $nom);
         $req->bindValue(':prenom', $prenom);
-        $req->bindValue(':pseudo', $pseudo);
-        $req->bindValue(':img_profil', $chemin_image);
-        $req->bindValue(':mail', $mail);
-        $req->bindValue(':mdp', $mdp);
-        $req->bindValue(':grade', $grade);
-        $req->bindValue(':siret', $siret);
-        $req->bindValue(':etat', $etat);
         $req->execute();
 
         if($etat == 'valid'){
