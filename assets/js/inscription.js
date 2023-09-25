@@ -29,7 +29,7 @@ function onOtherEtab() {
             '</div>'+
             '<div class="mb-2">'+
                 '<label for="adresse_etab" class="form-label">Complement d\'adresse</label>'+
-                '<input type="text" class="form-control" name="adresse_etab" pattern="[a-zA-Zéè]{3,128}" required>'+
+                '<input type="text" class="form-control" name="adresse_etab" pattern="[a-zA-Z0-9À-ÿ'+"'"+'-]*{3,128}" required>'+
             '</div>'
         );
     } else {

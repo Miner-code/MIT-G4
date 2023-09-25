@@ -4,7 +4,7 @@
 		<title>Connexion</title>
         <?php include "includes/head.php"; ?>
 	</head>	
-	<body>
+	<body class="bg-grey-light w-100">
 <?php
     include "includes/bdd.php";
     include "includes/nav.php";
@@ -52,8 +52,8 @@
     }
 
 ?>
-        <div class="row justify-content-center mt-4" style="width:100%;">
-            <div class="col-4 text-center">
+        <div class="row justify-content-center mt-4 w-100">
+            <div class="col-10 col-md-8 col-lg-6 col-xl-4 text-center card rounded-5 p-2 p-md-3 p-lg-4">
                 <form method="post">
                     <h1>Connexion</h1>
                     <div class="mb-3">

@@ -8,14 +8,19 @@ if (isset($_POST['submit'])){
     $prenom_user = $_POST['prenom'];
     $mail_user = $_POST['mail'];
     $dtn_user = $_POST['dtn'];
-    if (isset($_POST['date_obtention'])) {
-        $date_obtention = $_POST['date_obtention'];
-    }
-    if (isset($_POST['nom_etab'])) {
+    $num_cursus = $_POST['num_cursus'];
+    $date_obtention = $_POST['date_obtention'];
+    $num_etab = $_POST['num_etab'];
+    if ($num_etab === 'null') {
         $nom_etab = $_POST['nom_etab'];
+        $adresse_etab = $_POST['adresse_etab'];
         $nom_ville = $_POST['nom_ville'];
         $cp_ville = $_POST['cp_ville'];
-        $adresse_etab = $_POST['adresse_etab'];
+    }
+
+
+    if (isset($_POST['date_obtention'])) {
+        $date_obtention = $_POST['date_obtention'];
     }
 
     //* Vérification des doublons d'adresse mail
@@ -38,8 +43,8 @@ if (isset($_POST['submit'])){
             $tmp_img = $_FILES['img_profil']['tmp_name'];
             move_uploaded_file($tmp_img, $chemin_image);
         }
-
-        $mdp = sha256($_POST['password1']);   
+// ! CHANGER sha1
+        $mdp_user = sha1($_POST['password1']);   
 
         //* Ajout bdd
         $req = $bdd->prepare("INSERT INTO user (nom_user, prenom_user, mail_user, dtn_user, mdp_user, img_user) 
@@ -50,22 +55,10 @@ if (isset($_POST['submit'])){
         $req->bindValue(':prenom', $prenom);
         $req->execute();
 
-        if($etat == 'valid'){
-            session_start();
-            $_SESSION['grade'] = $grade;
-            $_SESSION['mail'] = $mail;
-            $_SESSION['pseudo'] = $pseudo;
-            header("location:index.php");
-        }else{
-            //* pour remettre à 0 les input
-            $nom = '';
-            $prenom = '';
-            $mail = '';
-            $grade = '';
-            $pseudo = '';
-            $siret = '';
-            $mes_error = 'Votre compte est en attente de validation.';
-        }
+        session_start();
+        $_SESSION['role'] = $role;
+        $_SESSION['id'] = $mail;
+        header("location:index.php");
     }
 }
 
