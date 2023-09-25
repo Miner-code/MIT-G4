@@ -5,15 +5,15 @@
         <?php include "includes/head.php"; ?>
         <script src="assets/js/inscription.js"></script>
 	</head>	
-	<body>
+	<body class="bg-grey-light w-100">
     <?php
     include "includes/bdd.php";
     include "includes/nav.php";
     include "includes/gestion-inscription.php"
     ?>
 
-        <div class="row justify-content-center my-4" style="width:100%;">
-            <div class="col-4 text-center">
+        <div class="row justify-content-center my-4 w-100">
+            <div class="col-10 col-md-8 col-lg-6 col-xl-4 text-center card rounded-5 p-2 p-md-3 p-lg-4">
                 <form method="post" enctype="multipart/form-data">
                     <h1>Inscription</h1>
                     <div class="mb-2">
@@ -34,7 +34,7 @@
                     </div>
                     <div class="mb-2">
                         <label for="img_profil" class="form-label">Image (pas obligatoire)</label><br/>
-                        <input class="align-center" type="file" name="img_profil" onchange="loadFile(event)">
+                        <input type="file" name="img_profil" onchange="loadFile(event)">
                         <!-- Previsualisation de l'image qui vient d'arriver -->
                         <img style="height:auto; width:10em" id="output" />
                     </div>
