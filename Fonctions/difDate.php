@@ -1,7 +1,13 @@
+<?php
 function difDate($dateCreation, $heureCreation) {
-    // Convertir la date et l'heure de création en objets DateTime
-    $dateCreationObj = new DateTime($dateCreation . ' ' . $heureCreation);
-    
+    if (DateTime::createFromFormat('Y-m-d H:i:s', $dateCreation . ' ' . $heureCreation) !== false) {
+        // Convertir la date et l'heure de création en objets DateTime
+        $dateCreationObj = new DateTime($dateCreation . ' ' . $heureCreation);
+    } else {
+        // Gérer l'erreur de format invalide ici
+        return "Format de date ou d'heure invalide.";
+    }
+        
     // Obtenir la date et l'heure actuelles
     $dateActuelleObj = new DateTime();
     
@@ -60,3 +66,4 @@ function difDate($dateCreation, $heureCreation) {
     
     return $phrase;
 }// Fin difDate
+?>
