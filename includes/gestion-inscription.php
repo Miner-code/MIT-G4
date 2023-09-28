@@ -51,8 +51,12 @@ if (isset($_POST['submit'])){
                             VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user)");
 
                             // ! REQUETE A FAIRE
-        $req->bindValue(':nom', $nom);
-        $req->bindValue(':prenom', $prenom);
+        $req->bindValue(':nom_user', $nom_user);
+        $req->bindValue(':prenom_user', $prenom_user);
+        $req->bindValue(':mail_user', $mail_user);
+        $req->bindValue(':dtn_user', $dtn_user);
+        $req->bindValue(':mdp_user', $mdp_user);
+        $req->bindValue(':img_user', $img_user);
         $req->execute();
 
         session_start();
