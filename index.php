@@ -46,12 +46,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Formulaire PHP</title>
+    <title>Fiche de renseignement</title>
 </head>
 <body>
     <form action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="post" enctype="text/plain">
         <div class="Informations">
-            <!-- ... Votre formulaire HTML existant ... -->
+           
         </div>
         <div class="Envoyer-Information">
             <button type="submit" class="submit-Button">Soumettre</button>
