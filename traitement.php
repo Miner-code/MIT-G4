@@ -10,7 +10,7 @@
             // qui stocke l'ID de l'entreprise.
             $id_entreprise = 1;
 
-            // Insérez le message dans la table des impressions
+            // Insérez le message dans la table des impression
             $sql = "INSERT INTO impression (titre, contenu, num_date, num_1, num_user)
                     VALUES (:titre, :contenu, NOW(), :num_1, :num_user)";
             $stmt = $bdd->prepare($sql);

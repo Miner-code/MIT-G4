@@ -23,7 +23,7 @@ session_start();
     $id_entreprise = 1; // Remplacez par l'ID de l'entreprise actuelle
 
     // Sélectionnez les messages de l'entreprise spécifiée
-    $sql = "SELECT * FROM impressions WHERE num_1 = :id_entreprise ORDER BY num_date DESC";
+    $sql = "SELECT * FROM impression WHERE num_1 = :id_entreprise ORDER BY num_date DESC";
     $stmt = $bdd->prepare($sql);
     $stmt->bindParam(":id_entreprise", $id_entreprise);
     $stmt->execute();
