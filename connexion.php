@@ -2,12 +2,12 @@
 <html>
 	<head>
 		<title>Connexion</title>
-        <?php include "includes/head.php"; ?>
+        <?php include "include/head.php"; ?>
 	</head>	
 	<body class="bg-grey-light w-100">
 <?php
-    include "includes/bdd.php";
-    include "includes/nav.php";
+    include "include/bdd.php";
+    include "include/nav.php";
 
     if(isset($_POST['mail']) && isset($_POST['password'])){
     

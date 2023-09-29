@@ -2,14 +2,14 @@
 <html>
 	<head>
 		<title>Inscription</title>
-        <?php include "includes/head.php"; ?>
+        <?php include "include/head.php"; ?>
         <script src="assets/js/inscription.js"></script>
 	</head>	
 	<body class="bg-grey-light w-100">
     <?php
-    include "includes/bdd.php";
-    include "includes/nav.php";
-    include "includes/gestion-inscription.php"
+    include "include/bdd.php";
+    include "include/nav.php";
+    include "include/gestion-inscription.php"
     ?>
 
         <div class="row justify-content-center my-4 w-100">

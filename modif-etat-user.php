@@ -9,7 +9,7 @@
         exit();
     }else{
 
-        include "includes/bdd.php";
+        include "include/bdd.php";
     
         if (isset($_GET["id"])) {
             if (isset($_GET["etat"])) {
