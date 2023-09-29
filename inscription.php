@@ -99,7 +99,7 @@
         </div>
 
 
-        <?php include "includes/footer.php"; ?>
+        <?php include "include/footer.php"; ?>
         <script>
         //* script pour l'affichage automatique de l'image
             var loadFile = function(event){

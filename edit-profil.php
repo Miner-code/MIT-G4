@@ -204,6 +204,6 @@ if($_GET['id'] != $_SESSION['id']){
 ?>
 
 
-		<?php include "includes/footer.php"; ?>
+		<?php include "include/footer.php"; ?>
 	</body>
 </html>

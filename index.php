@@ -19,6 +19,6 @@ session_start();
 		</form>
 		
 		
-		<?php include "includes/footer.php"; ?>
+		<?php include "include/footer.php"; ?>
 	</body>
 </html>

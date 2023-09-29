@@ -171,6 +171,6 @@ if(!empty($_GET['id'])){
 ?>
 
 
-		<?php include "includes/footer.php"; ?>
+		<?php include "include/footer.php"; ?>
 	</body>
 </html>
