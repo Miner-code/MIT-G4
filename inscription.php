@@ -18,19 +18,19 @@
                     <h1>Inscription</h1>
                     <div class="mb-2">
                         <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" name="nom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['nom'])){ echo $nom; } ?>" required>
+                        <input type="text" class="form-control" name="nom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['nom'])){ echo $nom_user; } ?>" required>
                     </div>
                     <div class="mb-2">
                         <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" name="prenom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['prenom'])){ echo $prenom; } ?>" required>
+                        <input type="text" class="form-control" name="prenom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['prenom'])){ echo $prenom_user; } ?>" required>
                     </div>
                     <div class="mb-2">
                         <label for="mail" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" name="mail" pattern="[a-z0-9._%+-éèàùç]+@[a-z0-9.-]+\.[a-z]{2,3}" value="<?php if(isset($_POST['mail'])){ echo $mail; } ?>" required>
+                        <input type="email" class="form-control" name="mail" pattern="[a-z0-9._%+-éèàùç]+@[a-z0-9.-]+\.[a-z]{2,3}" value="<?php if(isset($_POST['mail'])){ echo $mail_user; } ?>" required>
                     </div>
                     <div class="mb-2">
                         <label for="dtn" class="form-label">Date de naissance (pas obligatoire)</label>
-                        <input type="date" class="form-control datepicker_input" name="dtn" value="<?php if(isset($_POST['dtn'])){ echo $dtn; } ?>">
+                        <input type="date" class="form-control datepicker_input" name="dtn" value="<?php if(isset($_POST['dtn'])){ echo $dtn_user; } ?>">
                     </div>
                     <div class="mb-2">
                         <label for="img_profil" class="form-label">Image (pas obligatoire)</label><br/>
@@ -48,15 +48,19 @@
                     </div>
                     <div class="mb-2">
                         <label for="cursus" class="form-label">Cursus</label>
-                        <select id="cursus" class="form-select" name='num_cursus' aria-label="Selectionné votre cursus">
+                        <select id="cursus" class="form-select" name='id_cursus' aria-label="Selectionné votre cursus">
                             <?php 
                             $req = $bdd->query("SELECT * FROM cursus");
                             $dataCursus = $req->fetchAll();
                             foreach ($dataCursus as $li){
-                                print('<option value="'.$li['num_cursus'].'">'.$li['libele_cursus'].' '.$li['spe_cursus'].'</option>');
+                                print('<option value="'.$li['id_cursus'].'">'.$li['libele_cursus'].' '.$li['spe_cursus'].'</option>');
                             }
                             ?>
                         </select>
+                    </div>
+                    <div class="mb-2">
+                        <label for="date_debut" class="form-label">Date de début</label>
+                        <input type="date" class="form-control datepicker_input" name="date_debut" required>
                     </div>
                     <div class="mb-2 d-flex justify-content-center">
                         <div class="form-check pe-2">
@@ -75,13 +79,13 @@
                     <div id="onCursusEnd"></div>
                     <div class="mb-2">
                         <label for="select_etab" class="form-label">Etablissement</label>
-                        <select id="select_etab" class="form-select" name="num_etab" aria-label="Selectionné votre établissement" onchange="onOtherEtab()">
+                        <select id="select_etab" class="form-select" name="id_etab" aria-label="Selectionné votre établissement" onchange="onOtherEtab()">
                             <option value="">sélectionné votre établissement</option>
                             <?php 
                             $req = $bdd->query("SELECT * FROM etablissement");
                             $dataEtab = $req->fetchAll();
                             foreach ($dataEtab as $li){
-                                print('<option value="'.$li['num_etab'].'">'.$li['nom_etab'].'</option>');
+                                print('<option value="'.$li['id_etab'].'">'.$li['nom_etab'].'</option>');
                             }
                             ?>
                             <option value="null">autre</option>

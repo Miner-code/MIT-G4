@@ -3,8 +3,8 @@ function onChangeEndCursus() {
   if ($("#cursus_fini:checked").val() === "cursus_fini") {
     $("#onCursusEnd").html(
       '<div class="mb-2">' +
-        '<label for="date_obtention" class="form-label">Date d\'obtention</label>' +
-        '<input type="date" class="form-control datepicker_input" name="date_obtention" required>' +
+        '<label for="date_fin" class="form-label">Date de fin</label>' +
+        '<input type="date" class="form-control datepicker_input" name="date_fin" required>' +
         "</div>"
     );
   } else {

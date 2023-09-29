@@ -26,8 +26,8 @@
       <ul class="navbar-nav">
 <?php
     //* deconnection || connection et inscription
-        if(isset($_SESSION['grade'])){
-          echo '<li class="nav-item"><a class="nav-link" href="includes/logout.php">Déconnection</a></li>';
+        if(isset($_SESSION['id_user'])){
+          echo '<li class="nav-item"><a class="nav-link" href="include/logout.php">Déconnection</a></li>';
         }else{
           echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>';
           echo '<li class="nav-item"><a class="nav-link" href="inscription.php">Inscription</a></li>';
