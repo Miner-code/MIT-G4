@@ -13,12 +13,12 @@ if($_SESSION['grade'] != 'admin'){
 <html lang="fr">
 <head>
 	<title>Gestion des utilisateurs</title>
-	<?php include "includes/head.php"; ?>
+	<?php include "include/head.php"; ?>
 </head>
 	<body>
 		<?php 
-		include "includes/bdd.php";
-		include "includes/nav.php"; 
+		include "include/bdd.php";
+		include "include/nav.php"; 
 		?>
 		<h1 class="text-center mt-4">Gestion Utilisateur</h1>
         <div class="row justify-content-center mt-4">

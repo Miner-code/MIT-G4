@@ -17,9 +17,9 @@ if($_GET['id'] != $_SESSION['id']){
 </head>
 	<body>
 		<?php 
-		include "includes/bdd.php";
-		include "includes/nav.php";
-		include "includes/panier.php"; 
+		include "include/bdd.php";
+		include "include/nav.php";
+		include "include/panier.php"; 
 
         $id = $_GET['id'];
         include "includes/gestion-edit-profil.php";

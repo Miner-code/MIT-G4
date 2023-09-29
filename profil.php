@@ -3,12 +3,12 @@
 <html lang="fr">
 <head>
 	<title>Profil</title>
-	<?php include "includes/head.php"; ?>
+	<?php include "include/head.php"; ?>
 </head>
 	<body>
 		<?php 
-		include "includes/bdd.php";
-		include "includes/nav.php";
+		include "include/bdd.php";
+		include "include/nav.php";
       
 //! historique achat/vente
 
