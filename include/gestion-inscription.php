@@ -18,7 +18,6 @@ if (isset($_POST['submit'])){
         $cp_ville = $_POST['cp_ville'];
     }
 
-
     if (isset($_POST['date_obtention'])) {
         $date_obtention = $_POST['date_obtention'];
     }
@@ -48,15 +47,42 @@ if (isset($_POST['submit'])){
 
         //* Ajout bdd
         $req = $bdd->prepare("INSERT INTO user (nom_user, prenom_user, mail_user, dtn_user, mdp_user, img_user) 
-                            VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user)");
-
-                            // ! REQUETE A FAIRE
+            VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user)");
         $req->bindValue(':nom_user', $nom_user);
         $req->bindValue(':prenom_user', $prenom_user);
         $req->bindValue(':mail_user', $mail_user);
         $req->bindValue(':dtn_user', $dtn_user);
         $req->bindValue(':mdp_user', $mdp_user);
         $req->bindValue(':img_user', $img_user);
+        $req->execute();
+
+        $id_user = $bdd->lastInsertId();
+
+        $req = $bdd->prepare("INSERT INTO ville (nom_ville , cp_ville) VALUES (:nom_ville, :cp_ville)");
+        $req->bindValue(':nom_ville', $nom_ville);
+        $req->bindValue(':cp_ville', $cp_ville);
+        $req->execute();
+
+        $id_ville = $bdd->lastInsertId();
+
+        $req = $bdd->prepare("INSERT INTO etablissement (nom_etab , adresse_etab, profil_etab, banniere_etab, id_ville) 
+            VALUES (:nom_etab , :adresse_etab, :profil_etab, :banniere_etab, :id_ville)");
+        $req->bindValue(':nom_etab', $nom_etab);
+        $req->bindValue(':adresse_etab', $adresse_etab);
+        $req->bindValue(':profil_etab', $profil_etab);
+        $req->bindValue(':banniere_etab', $banniere_etab);
+        $req->bindValue(':id_ville', $id_ville);
+        $req->execute();
+
+        $id_etab = $bdd->lastInsertId();
+
+        $req = $bdd->prepare("INSERT INTO participer (id_user , id_cursus, id_etab, date_debut, date_fin) 
+            VALUES (:id_user , :id_cursus, :id_etab, :date_debut, :date_fin)");
+        $req->bindValue(':id_user', $id_user);
+        $req->bindValue(':id_cursus', $id_cursus);
+        $req->bindValue(':id_etab', $id_etab);
+        $req->bindValue(':date_debut', $date_debut);
+        $req->bindValue(':date_fin', $date_fin);
         $req->execute();
 
         session_start();
