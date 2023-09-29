@@ -10,42 +10,28 @@
     include "include/nav.php";
 
     if(isset($_POST['mail']) && isset($_POST['password'])){
-    
         $mail = $_POST['mail'];
-        $mdp = sha1($_POST['password']);
-        
-        $req_co = "SELECT mail, mdp FROM user WHERE mail = '$mail' AND mdp = '$mdp'";
+        $mdp = hash('sha256', $_POST['password']);
+        $req_co = "SELECT mail_user, mdp_user FROM user WHERE mail_user = '$mail' AND mdp_user = '$mdp'";
         $co = $bdd->prepare($req_co);
         $co->execute();
         $user_exist = $co->rowCount();
-        
-        if($user_exist == 1){
-            //* Verifiaction de l'etat du comte : attValid / valid / banni
-            $req = $bdd->prepare("SELECT etat FROM user WHERE mail = '$mail'");
-            $req->execute();
-            $result = $req->fetch(\PDO::FETCH_OBJ);
-            $etat =  $result->etat;
 
-            if($etat == 'attValid'){
-                $mess = 'Votre comte est en cour de validation.';
-            }
-            if($etat == 'banni'){
+        if($user_exist == 1){
+        //* Verifiaction du role du compte (si banni)
+            $req = $bdd->prepare("SELECT id_user, role_user FROM user WHERE mail_user = '$mail'");
+            $req->execute();
+            $data = $req->fetch(\PDO::FETCH_OBJ);
+            $id_user = $data->id_user;
+            $role_user = $data->role_user;
+
+            if($role_user == 2){
                 $mess = 'Votre comte à été banni.';
-            }
-        //* Si le compte est valid
-            if($etat == 'valid'){
-                $req = $bdd->prepare("SELECT grade, pseudo, id FROM user WHERE mail = '$mail'");
-                $req->execute();
-                $result = $req->fetch(\PDO::FETCH_OBJ);
-                $grade =  $result->grade;
-                $pseudo =  $result->pseudo;
-                $id =  $result->id;
-    
+            } else {
+                //* Si le compte est valid
                 session_start();
-                $_SESSION['id'] = $id;
-                $_SESSION['grade'] = $grade;
-                $_SESSION['mail'] = $mail;
-                $_SESSION['pseudo'] = $pseudo;
+                $_SESSION['id_user'] = $id_user;
+                $_SESSION['role_user'] = $role_user;
                 header("location:index.php");
             }
         }
