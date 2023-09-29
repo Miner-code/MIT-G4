@@ -4,7 +4,7 @@ session_start();
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-	<title>Photo For You</title>
+	<title>Unea.com</title>
 	<?php include "includes/head.php"; ?>
 </head>
 	<body>
@@ -12,7 +12,7 @@ session_start();
 		include "includes/bdd.php";
 		include "includes/nav.php"; 
 		?>
-
+		
 		<?php include "includes/footer.php"; ?>
 	</body>
 </html>
