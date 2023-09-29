@@ -29,13 +29,12 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `contenu` text,
-  `num_date` int(11) NOT NULL,
-  `num_1` int(11) NOT NULL,
-  PRIMARY KEY (`num`),
-  KEY `num_date` (`num_date`),
-  KEY `num_1` (`num_1`)
+  `id_com` int(11) NOT NULL AUTO_INCREMENT,
+  `contenu_com` text,
+  `date_com` timestamp NOT NULL,
+  `id_imp` int(11) NOT NULL,
+  PRIMARY KEY (`id_com`),
+  KEY `id_imp` (`id_imp`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -46,23 +45,10 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 
 DROP TABLE IF EXISTS `cursus`;
 CREATE TABLE IF NOT EXISTS `cursus` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `lib` varchar(250) DEFAULT NULL,
-  `spe` varchar(50) DEFAULT NULL,
-  PRIMARY KEY (`num`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
--- --------------------------------------------------------
-
---
--- Structure de la table `date_`
---
-
-DROP TABLE IF EXISTS `date_`;
-CREATE TABLE IF NOT EXISTS `date_` (
-  `num_date` int(11) NOT NULL AUTO_INCREMENT,
-  `value_date` timestamp NULL DEFAULT NULL,
-  PRIMARY KEY (`num_date`)
+  `id_cursus` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle_cursus` varchar(250) DEFAULT NULL,
+  `spe_cursus` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id_cursus`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -73,34 +59,33 @@ CREATE TABLE IF NOT EXISTS `date_` (
 
 DROP TABLE IF EXISTS `etablissement`;
 CREATE TABLE IF NOT EXISTS `etablissement` (
-  `num_etablissement` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(200) DEFAULT NULL,
-  `adresse` varchar(250) DEFAULT NULL,
-  `profil_etablissement` varchar(500) NOT NULL,
-  `banniere_etablissement` varchar(500) NOT NULL,
-  `num` int(11) NOT NULL,
-  PRIMARY KEY (`num_etablissement`),
-  KEY `num` (`num`)
+  `id_etab` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_etab` varchar(200) DEFAULT NULL,
+  `adresse_etab` varchar(250) DEFAULT NULL,
+  `profil_etab` varchar(500) NOT NULL,
+  `banniere_etab` varchar(500) NOT NULL,
+  `id_ville` int(11) NOT NULL,
+  PRIMARY KEY (`id_etab`),
+  KEY `id_ville` (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `impressions`
+-- Structure de la table `impression`
 --
 
-DROP TABLE IF EXISTS `impressions`;
-CREATE TABLE IF NOT EXISTS `impressions` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `titre` varchar(250) DEFAULT NULL,
-  `contenu` text,
-  `num_date` int(11) NOT NULL,
-  `num_1` int(11) NOT NULL,
-  `num_user` int(11) NOT NULL,
-  PRIMARY KEY (`num`),
-  KEY `num_date` (`num_date`),
-  KEY `num_1` (`num_1`),
-  KEY `num_user` (`num_user`)
+DROP TABLE IF EXISTS `impression`;
+CREATE TABLE IF NOT EXISTS `impression` (
+  `id_imp` int(11) NOT NULL AUTO_INCREMENT,
+  `titre_imp` varchar(250) DEFAULT NULL,
+  `contenu_imp` text,
+  `date_imp` timestamp NOT NULL,
+  `id_theme` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL,
+  PRIMARY KEY (`id_imp`),
+  KEY `id_theme` (`id_theme`),
+  KEY `id_user` (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -111,14 +96,15 @@ CREATE TABLE IF NOT EXISTS `impressions` (
 
 DROP TABLE IF EXISTS `participer`;
 CREATE TABLE IF NOT EXISTS `participer` (
-  `num_user` int(11) NOT NULL AUTO_INCREMENT,
-  `num` int(11) NOT NULL,
-  `num_etablissement` int(11) NOT NULL,
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cursus` int(11) NOT NULL,
+  `id_etab` int(11) NOT NULL,
   `date_debut` date DEFAULT NULL,
   `date_fin` date DEFAULT NULL,
-  PRIMARY KEY (`num_user`,`num`,`num_etablissement`),
-  KEY `num` (`num`),
-  KEY `num_etablissement` (`num_etablissement`)
+  PRIMARY KEY (`id_user`,`id_cursus`,`id_etab`),
+  KEY `id_user` (`id_user`),
+  KEY `id_cursus` (`id_cursus`),
+  KEY `id_etab` (`id_etab`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -129,28 +115,28 @@ CREATE TABLE IF NOT EXISTS `participer` (
 
 DROP TABLE IF EXISTS `theme`;
 CREATE TABLE IF NOT EXISTS `theme` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `libelle` varchar(250) DEFAULT NULL,
-  PRIMARY KEY (`num`)
+  `id_theme` int(11) NOT NULL AUTO_INCREMENT,
+  `libelle_theme` varchar(250) DEFAULT NULL,
+  PRIMARY KEY (`id_theme`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
 --
--- Structure de la table `user_`
+-- Structure de la table `user`
 --
 
-DROP TABLE IF EXISTS `user_`;
-CREATE TABLE IF NOT EXISTS `user_` (
-  `num_user` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `prenom` varchar(50) DEFAULT NULL,
-  `mail` varchar(50) DEFAULT NULL,
-  `dtn` date DEFAULT NULL,
-  `mdp` varchar(50) DEFAULT NULL,
-  `img` varchar(250) DEFAULT NULL,
-  `role` int(11) DEFAULT NULL,
-  PRIMARY KEY (`num_user`)
+DROP TABLE IF EXISTS `user`;
+CREATE TABLE IF NOT EXISTS `user` (
+  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_user` varchar(50) DEFAULT NULL,
+  `prenom_user` varchar(50) DEFAULT NULL,
+  `mail_user` varchar(50) DEFAULT NULL,
+  `dtn_user` date DEFAULT NULL,
+  `mdp_user` varchar(50) DEFAULT NULL,
+  `img_user` varchar(250) DEFAULT NULL,
+  `role_user` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -161,10 +147,10 @@ CREATE TABLE IF NOT EXISTS `user_` (
 
 DROP TABLE IF EXISTS `ville`;
 CREATE TABLE IF NOT EXISTS `ville` (
-  `num` int(11) NOT NULL AUTO_INCREMENT,
-  `nom` varchar(50) DEFAULT NULL,
-  `cp` decimal(5,0) DEFAULT NULL,
-  PRIMARY KEY (`num`)
+  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
+  `nom_ville` varchar(50) DEFAULT NULL,
+  `cp_ville` decimal(5,0) DEFAULT NULL,
+  PRIMARY KEY (`id_ville`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -175,30 +161,28 @@ CREATE TABLE IF NOT EXISTS `ville` (
 -- Contraintes pour la table `commentaire`
 --
 ALTER TABLE `commentaire`
-  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`num_date`) REFERENCES `date_` (`num_date`),
-  ADD CONSTRAINT `commentaire_ibfk_2` FOREIGN KEY (`num_1`) REFERENCES `impressions` (`num`);
+  ADD CONSTRAINT `commentaire_ibfk_1` FOREIGN KEY (`id_imp`) REFERENCES `impression` (`id_imp`);
 
 --
 -- Contraintes pour la table `etablissement`
 --
 ALTER TABLE `etablissement`
-  ADD CONSTRAINT `etablissement_ibfk_1` FOREIGN KEY (`num`) REFERENCES `ville` (`num`);
+  ADD CONSTRAINT `etablissement_ibfk_1` FOREIGN KEY (`id_ville`) REFERENCES `ville` (`id_ville`);
 
 --
--- Contraintes pour la table `impressions`
+-- Contraintes pour la table `impression`
 --
-ALTER TABLE `impressions`
-  ADD CONSTRAINT `impressions_ibfk_1` FOREIGN KEY (`num_date`) REFERENCES `date_` (`num_date`),
-  ADD CONSTRAINT `impressions_ibfk_2` FOREIGN KEY (`num_1`) REFERENCES `theme` (`num`),
-  ADD CONSTRAINT `impressions_ibfk_3` FOREIGN KEY (`num_user`) REFERENCES `user_` (`num_user`);
+ALTER TABLE `impression`
+  ADD CONSTRAINT `impression_ibfk_1` FOREIGN KEY (`id_theme`) REFERENCES `theme` (`id_theme`),
+  ADD CONSTRAINT `impression_ibfk_2` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`);
 
 --
 -- Contraintes pour la table `participer`
 --
 ALTER TABLE `participer`
-  ADD CONSTRAINT `participer_ibfk_1` FOREIGN KEY (`num_user`) REFERENCES `user_` (`num_user`),
-  ADD CONSTRAINT `participer_ibfk_2` FOREIGN KEY (`num`) REFERENCES `cursus` (`num`),
-  ADD CONSTRAINT `participer_ibfk_3` FOREIGN KEY (`num_etablissement`) REFERENCES `etablissement` (`num_etablissement`);
+  ADD CONSTRAINT `participer_ibfk_1` FOREIGN KEY (`id_user`) REFERENCES `user` (`id_user`),
+  ADD CONSTRAINT `participer_ibfk_2` FOREIGN KEY (`id_cursus`) REFERENCES `cursus` (`id_cursus`),
+  ADD CONSTRAINT `participer_ibfk_3` FOREIGN KEY (`id_etab`) REFERENCES `etablissement` (`id_etab`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
