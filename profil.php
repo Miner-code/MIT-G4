@@ -9,7 +9,7 @@
 		<?php 
 		include "includes/bdd.php";
 		include "includes/nav.php";
-    
+      
 //! historique achat/vente
 
 if(!empty($_GET['id'])){
