@@ -20,24 +20,25 @@ session_start();
 		
 		<div class="messages">
     <?php
-    $id_entreprise = 1; // Remplacez par l'ID de l'entreprise actuelle
+    $id_etab = 1; // Replace with the current establishment's ID
 
-    // Sélectionnez les messages de l'entreprise spécifiée
-    $sql = "SELECT * FROM impression WHERE num_1 = :id_entreprise ORDER BY num_date DESC";
+    // Select messages for the specified establishment
+    $sql = "SELECT * FROM impression WHERE id_theme = :id_etab ORDER BY date_imp DESC";
     $stmt = $bdd->prepare($sql);
-    $stmt->bindParam(":id_entreprise", $id_entreprise);
+    $stmt->bindParam(":id_etab", $id_etab);
     $stmt->execute();
     $messages = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
     foreach ($messages as $message) {
         echo "<div class='message'>";
-        echo "<h3>{$message['titre']}</h3>";
-        echo "<p>{$message['contenu']}</p>";
-        echo "<p>Publié le {$message['num_date']}</p>";
+        echo "<h3>{$message['titre_imp']}</h3>";
+        echo "<p>{$message['contenu_imp']}</p>";
+        echo "<p>Published on {$message['date_imp']}</p>";
         echo "</div>";
     }
     ?>
 </div>
+
 		
 		<?php include "include/footer.php"; ?>
 	</body>
