@@ -30,16 +30,16 @@
             } else {
                 //* Si le compte est valid
                 session_start();
-                $_SESSION['id_user'] = $id_user;
-                $_SESSION['role_user'] = $role_user;
+                $_SESSION['id_user'] = intval($id_user);
+                $_SESSION['role_user'] = intval($role_user);
                 header("location:index.php");
             }
         }
     }
 
 ?>
-        <div class="row justify-content-center mt-4 w-100">
-            <div class="col-10 col-md-8 col-lg-6 col-xl-4 text-center card rounded-5 p-2 p-md-3 p-lg-4">
+        <!-- <div class="row justify-content-center mt-4 w-100"> -->
+            <!-- <div class="col-10 col-md-8 col-lg-6 col-xl-4 text-center card rounded-5 p-2 p-md-3 p-lg-4"> -->
                 <form method="post">
                     <h1>Connexion</h1>
                     <div class="mb-3">
@@ -56,8 +56,8 @@
                 <hr/>
                 <?php if(isset($mess)){echo $mess.'<hr/>';} ?>
                 <a href="inscription.php">Vous n'avez pas de compte, inscrivez-vous !</a>
-            </div>
-        </div>
+            <!-- </div> -->
+        <!-- </div> -->
 
 
         <?php include "include/footer.php"; ?>

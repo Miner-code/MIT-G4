@@ -1,41 +1,57 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="index.php">
-      UNEA
-      <!-- <img src="assets/img/logoFondTransparent.png" alt="logo UNEA" class="navbar-logo"> -->
-    </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto">
-        <?php
-      if(isset($_SESSION['grade'])){
-          echo '<li class="nav-item"><a class="nav-link" href="profil.php?id='.$_SESSION['id'].'">Mon compte</a></li>';
-      }
-          ?>
-        <?php
-        if(isset($_SESSION['grade'])){
-            if($_SESSION['grade'] == 'admin'){
-                echo '<li class="nav-item"><a class="nav-link" href="gestion-utilisateur.php">Gestion utilisateur</a></li>';
-            }
-        }
-          ?>
-        <!-- <li class="nav-item"><a class="nav-link" href="nous-contacter.php">Nous contacter</a></li> -->
-      </ul>
-      <ul class="navbar-nav">
+<div class="container-fluid">
+    	<div class="row min-vh-100 flex-column flex-md-row">
+			<aside class="col-12 col-md-3 col-xl-2 p-0 bg-grey ">
+			  	<nav class="navbar navbar-expand-md navbar-light bd-light flex-md-column flex-row align-items-center py-2 text-center sticky-top" id="sidebar">
+			    	<div class="text-center p-3">
+			      		<img src="assets/img/logoFondTransparent.png" alt="logo UNEA" class="img-fluid my-4 p-1 d-none d-md-block"/>
+			    	</div>
+			    	<button type="button" class="navbar-toggler border-0 order-1" data-bs-toggle="collapse" data-bs-target="#nav" aria-controls="nav" aria-expanded="false" aria-label="Toggle navigation">
+			      		<span class="navbar-toggler-icon"></span>
+			    	</button>
+			    	<b class="collapse navbar-collapse order-last w-100 links-size" id="nav">
+			      	<ul class="navbar-nav flex-column w-100">
+                <li class="nav-item">
+                	<a href="home.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-house m-2 me-3"></i></div><span class="grey-dark">Acceuil</span></a>
+                </li>
 <?php
-    //* deconnection || connection et inscription
-        if(isset($_SESSION['id_user'])){
-          echo '<li class="nav-item"><a class="nav-link" href="include/logout.php">Déconnection</a></li>';
-        }else{
-          echo '<li class="nav-item"><a class="nav-link" href="connexion.php">Connexion</a></li>';
-          echo '<li class="nav-item"><a class="nav-link" href="inscription.php">Inscription</a></li>';
-        }
+// * If role_user === admin
+if (isset($_SESSION['role_user'])) {
+  if ($_SESSION['role_user'] === 1) {
 ?>
-        
-        
-      </ul>
-    </div>
-  </div>
-</nav>
+                <li class="nav-item">
+			        <a href="admin.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-briefcase m-2 me-3"></i></div><span class="grey-dark">Gestion Admin</span></a>
+			    </li>
+<?php
+  }
+}
+?>
+
+<?php
+//  * Gestion connexion / deconnexion
+if (isset($_SESSION['id_user'])) {
+?>
+                <li class="nav-item">
+                	<a href="profil.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user m-2 me-3"></i></div><span class="grey-dark">Mon Profil</span></a>
+                </li>
+                <li class="nav-item">
+                	<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off m-2 me-3"></i></div><span class="grey-dark">Déconnection</span></a>
+                </li>
+<?php
+} else {
+?>
+                <li class="nav-item">
+                	<a href="connexion.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-arrow-right-to-bracket m-2 me-3"></i></div><span class="grey-dark">Connexion</span></a>
+                </li>
+                <li class="nav-item">
+                	<a href="inscription.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-file-signature m-2 me-3"></i></div><span class="grey-dark">Inscription</span></a>
+                </li>
+<?php
+}
+?>
+			      	</ul>
+			    	</b>
+			  	</nav>   
+			</aside>
+<!-- fin navbar -->
+				<main class="col px-0 flex-grow-1">
+					<div class="container py-3 min-h-for-footer">

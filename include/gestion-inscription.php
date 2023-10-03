@@ -105,8 +105,8 @@ if (isset($_POST['submit'])){
         $role_user = $req->fetch(\PDO::FETCH_OBJ)->role_user;
 
         session_start();
-        $_SESSION['id_user'] = $id_user;
-        $_SESSION['role_user'] = $role_user;
+        $_SESSION['id_user'] = intval($id_user);
+        $_SESSION['role_user'] = intval($role_user);
         header("location:index.php");
     }
 }
