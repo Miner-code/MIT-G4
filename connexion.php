@@ -4,7 +4,7 @@
 		<title>Connexion</title>
         <?php include "include/head.php"; ?>
 	</head>	
-	<body class="w-100">
+	<body>
 <?php
     include "include/bdd.php";
 
@@ -48,19 +48,19 @@
                     <a href="inscription.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark">INSCRIPTION</a>
                     <a href="connexion.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark login-active">CONNEXION</a>
                 </section>
-                <p class="text-center my-5">Découvrez la plateforme qui mets en relation les étudiants</p>
-                <form method="post" class="d-flex flex-column align-items-center">
+                <p class="text-center m-5 fs-4">Découvrez la plateforme qui mets en relation les étudiants</p>
+                <form method="post" class="d-flex flex-column align-items-center fs-4">
                     <section class="p-2 mb-5">
                         <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
                             <path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z"/>
                         </svg>
-                        <input type="email" name="mail" class="ps-input-svg border-bottom border-0 border-focus-bot">
+                        <input type="email" name="mail" placeholder="alexis@unea.com" class="ps-input-svg border-bottom border-0 border-focus-bot">
                     </section>
                     <section class="p-2 my-5">
                         <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
                             <path d="m3 0c-1.1 0-2 .9-2 2v1h-1v4h6v-4h-1v-1c0-1.1-.9-2-2-2zm0 1c.56 0 1 .44 1 1v1h-2v-1c0-.56.44-1 1-1z" transform="translate(1)"/>
                         </svg>
-                        <input type="password" name="password" class="ps-input-svg border-bottom border-0 border-focus-bot">
+                        <input type="password" name="password" placeholder="***********" class="ps-input-svg border-bottom border-0 border-focus-bot">
                     </section>
                     <button type="submit" class="btn btn-primary py-2 px-5 mt-2">Connexion</button>
                 </form>
