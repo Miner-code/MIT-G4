@@ -104,7 +104,7 @@
 }
 
 @media (min-width: 768px) {
-    .w-md-100 {
-        width: 100%;
+    .w-md-50 {
+        width: 50% !important;
     }
 }
