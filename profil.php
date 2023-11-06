@@ -27,7 +27,7 @@ session_start();
 				</thead>
 				<tbody>
 					<?php
-					$stmt = $bdd->prepare("SELECT * FROM user WHERE id_user = :id_user");
+					$stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus WHERE id_user = :id_user");
 					$stmt->bindParam(":id_user", $_SESSION['id_user']);
 					$stmt->execute();
 					while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -37,7 +37,7 @@ session_start();
 							<td><?php echo $user_data['prenom_user']; ?></td>
 							<td><?php echo $user_data['mail_user']; ?></td>
 							<td><?php echo $user_data['dtn_user']; ?></td>
-							<td><?php echo $user_data['study']; ?></td>
+							<td><?php echo $user_data['libelle_cursus']; ?></td>
 						</tr>
 					<?php
 					}
