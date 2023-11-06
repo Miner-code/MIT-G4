@@ -33,10 +33,10 @@ session_start();
 					while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) {
 					?>
 						<tr>
-							<td><?php echo $user_data['firstname']; ?></td>
-							<td><?php echo $user_data['lastname']; ?></td>
-							<td><?php echo $user_data['email']; ?></td>
-							<td><?php echo $user_data['birthdate']; ?></td>
+							<td><?php echo $user_data['nom_user']; ?></td>
+							<td><?php echo $user_data['prenom_user']; ?></td>
+							<td><?php echo $user_data['mail_user']; ?></td>
+							<td><?php echo $user_data['dtn_user']; ?></td>
 							<td><?php echo $user_data['study']; ?></td>
 						</tr>
 					<?php
