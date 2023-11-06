@@ -10,17 +10,17 @@
 			    	</button>
 			    	<b class="collapse navbar-collapse order-last w-100 links-size" id="nav">
 			      	<ul class="navbar-nav flex-column w-100">
-                <li class="nav-item">
-                	<a href="home.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-house ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Acceuil</span></a>
-                </li>
+						<li class="nav-item">
+							<a href="home.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-house ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Acceuil</span></a>
+						</li>
 <?php
 // * If role_user === admin
 if (isset($_SESSION['role_user'])) {
   if ($_SESSION['role_user'] === 1) {
 ?>
-                <li class="nav-item">
-			        <a href="admin.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-briefcase ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Gestion Admin</span></a>
-			    </li>
+						<li class="nav-item">
+							<a href="admin.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-briefcase ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Gestion Admin</span></a>
+						</li>
 <?php
   }
 }
@@ -28,23 +28,15 @@ if (isset($_SESSION['role_user'])) {
 
 <?php
 //  * Gestion connexion / deconnexion
+// TODO : page profil sur la search bar
 if (isset($_SESSION['id_user'])) {
 ?>
-                <li class="nav-item">
-                	<a href="profil.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Mon Profil</span></a>
-                </li>
-                <li class="nav-item">
-                	<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Déconnection</span></a>
-                </li>
-<?php
-} else {
-?>
-                <li class="nav-item">
-                	<a href="connexion.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-arrow-right-to-bracket ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Connexion</span></a>
-                </li>
-                <li class="nav-item">
-                	<a href="inscription.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-file-signature ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Inscription</span></a>
-                </li>
+						<li class="nav-item">
+							<a href="profil.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Mon Profil</span></a>
+						</li>
+						<li class="nav-item">
+							<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Déconnection</span></a>
+						</li>
 <?php
 }
 ?>
