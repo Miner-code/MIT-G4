@@ -87,3 +87,13 @@ body{
     font-family: 'Font Awesome 5 Free'; /* Assurez-vous que la police est chargée correctement */
 }
 
+/****************************************************/
+.container {
+    margin: 20px auto;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 20%;
+    text-align: left;
+}
+
