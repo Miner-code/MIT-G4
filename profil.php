@@ -24,28 +24,29 @@ session_start();
 		<div class="col">
 			<table class="table">
 				<tbody>
-						<tr>
-							<td class="fs-4">Prénom</td>
-							<td class="fs-4"><?php echo $user_data['prenom_user']; ?></td>
-						</tr>
-						<tr>
-							<td class="fs-4">Nom</td>
-							<td class="fs-4"><?php echo $user_data['nom_user']; ?></td>
-						</tr>
-						<tr>
-							<td class="fs-4">Email</td>
-							<td class="fs-4"><?php echo $user_data['mail_user']; ?></td>
-						</tr>
-						<tr>
-							<td class="fs-4">Date de naissance</td>
-							<td class="fs-4"><?php echo $user_data['dtn_user']; ?></td>
-						</tr>
-						<tr>
-							<td class="fs-4">Niveau d'études</td>
-							<td class="fs-4"><?php echo $user_data['libelle_cursus']; ?></td>
-						</tr>
+					<tr>
+						<td class="fs-4">Prénom</td>
+						<td class="fs-4"><?php echo $user_data['prenom_user']; ?></td>
+					</tr>
+					<tr>
+						<td class="fs-4">Nom</td>
+						<td class="fs-4"><?php echo $user_data['nom_user']; ?></td>
+					</tr>
+					<tr>
+						<td class="fs-4">Email</td>
+						<td class="fs-4"><?php echo $user_data['mail_user']; ?></td>
+					</tr>
+					<tr>
+						<td class="fs-4">Date de naissance</td>
+						<td class="fs-4"><?php echo $user_data['dtn_user']; ?></td>
+					</tr>
+					<tr>
+						<td class="fs-4">Niveau d'études</td>
+						<td class="fs-4"><?php echo $user_data['libelle_cursus']; ?></td>
+					</tr>
 				</tbody>
 			</table>
+			<a href="edit-profil.php" class="btn btn-primary">Éditer</a>
 		</div>
 	</div>
 
