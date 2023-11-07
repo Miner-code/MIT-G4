@@ -33,24 +33,24 @@ session_start();
 					while ($user_data = $stmt->fetch(PDO::FETCH_ASSOC)) {
 						?>
 						<tr>
-							<td>Prénom</td>
-							<td><input type="text" name="prenom_user" value="<?php echo $user_data['prenom_user']; ?>"></td>
+							<td class="fs-4">Prénom</td>
+							<td class="fs-4"><input type="text" name="prenom_user" value="<?php echo $user_data['prenom_user']; ?>"></td>
 						</tr>
 						<tr>
-							<td>Nom</td>
-							<td><input type="text" name="nom_user" value="<?php echo $user_data['nom_user']; ?>"></td>
+							<td class="fs-4">Nom</td>
+							<td class="fs-4"><input type="text" name="nom_user" value="<?php echo $user_data['nom_user']; ?>"></td>
 						</tr>
 						<tr>
-							<td>Email</td>
-							<td><input type="email" name="mail_user" value="<?php echo $user_data['mail_user']; ?>"></td>
+							<td class="fs-4">Email</td>
+							<td class="fs-4"><input type="email" name="mail_user" value="<?php echo $user_data['mail_user']; ?>"></td>
 						</tr>
 						<tr>
-							<td>Date de naissance</td>
-							<td><input type="text" name="dtn_user" value="<?php echo $user_data['dtn_user']; ?>"></td>
+							<td class="fs-4">Date de naissance</td>
+							<td class="fs-4"><input type="text" name="dtn_user" value="<?php echo $user_data['dtn_user']; ?>"></td>
 						</tr>
 						<tr>
-							<td>Niveau d'études</td>
-							<td>
+							<td class="fs-4">Niveau d'études</td>
+							<td class="fs-4">
 								<select name="cursus">
 									<option value="<?php echo $user_data['id_cursus']; ?>"><?php echo $user_data['libelle_cursus']; ?></option>
 									<!-- Vous devez charger la liste des cursus disponibles ici -->
