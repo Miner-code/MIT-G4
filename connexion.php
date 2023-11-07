@@ -38,12 +38,12 @@
 
 ?>
         <section class="row vh-100 vw-100 mx-0 px-0">
-            <section class="col-6 d-none bg-grey d-md-flex justify-content-center align-items-center">
+            <section class="col-6 d-none bg-grey d-xl-flex justify-content-center align-items-center">
                 <section>
                     <img src="assets/img/logoFondTransparent.png" alt="logo UNEA" class="img-fluid">
                 </section>
             </section>
-            <section class="col-md-6 col-12 p-0">
+            <section class="col-xl-6 col-12 p-0">
                 <section class="row bg-grey-light mx-0">
                     <a href="inscription.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark">INSCRIPTION</a>
                     <a href="connexion.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark login-active">CONNEXION</a>
@@ -66,7 +66,7 @@
                 </form>
                 <?php if(isset($mess)){echo $mess.'<hr/>';} ?>
                 
-                <section class="position-absolute py-3 bg-grey-light w-100 w-md-50 d-flex flex-row justify-content-center" style="bottom: 0;">
+                <section class="position-absolute py-3 bg-grey-light w-100 w-xl-50 d-flex flex-row justify-content-center" style="bottom: 0;">
                     <svg class="mx-2" width="36" height="36" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                         <path d="m18.59 5.89c-1.23-.57-2.54-.99-3.92-1.23-.17.3-.37.71-.5 1.04-1.46-.22-2.91-.22-4.34 0-.14-.33-.34-.74-.51-1.04-1.38.24-2.69.66-3.92 1.23-2.48 3.74-3.15 7.39-2.82 10.98 1.65 1.23 3.24 1.97 4.81 2.46.39-.53.73-1.1 1.03-1.69-.57-.21-1.11-.48-1.62-.79.14-.1.27-.21.4-.31 3.13 1.46 6.52 1.46 9.61 0 .13.11.26.21.4.31-.51.31-1.06.57-1.62.79.3.59.64 1.16 1.03 1.69 1.57-.49 3.17-1.23 4.81-2.46.39-4.17-.67-7.78-2.82-10.98zm-9.75 8.78c-.94 0-1.71-.87-1.71-1.94s.75-1.94 1.71-1.94 1.72.87 1.71 1.94c0 1.06-.75 1.94-1.71 1.94zm6.31 0c-.94 0-1.71-.87-1.71-1.94s.75-1.94 1.71-1.94 1.72.87 1.71 1.94c0 1.06-.75 1.94-1.71 1.94z"/>
                     </svg>
