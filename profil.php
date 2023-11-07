@@ -20,33 +20,35 @@ session_start();
 	?>
 
 	<h1 class="text-center">Mon profil</h1>
-	<div class="row">
-		<div class="col">
-			<table class="table">
-				<tbody>
-					<tr>
-						<td class="fs-4">Prénom</td>
-						<td class="fs-4"><?php echo $user_data['prenom_user']; ?></td>
-					</tr>
-					<tr>
-						<td class="fs-4">Nom</td>
-						<td class="fs-4"><?php echo $user_data['nom_user']; ?></td>
-					</tr>
-					<tr>
-						<td class="fs-4">Email</td>
-						<td class="fs-4"><?php echo $user_data['mail_user']; ?></td>
-					</tr>
-					<tr>
-						<td class="fs-4">Date de naissance</td>
-						<td class="fs-4"><?php echo $user_data['dtn_user']; ?></td>
-					</tr>
-					<tr>
-						<td class="fs-4">Niveau d'études</td>
-						<td class="fs-4"><?php echo $user_data['libelle_cursus']; ?></td>
-					</tr>
-				</tbody>
-			</table>
-			<a href="edit-profil.php" class="btn btn-primary">Éditer</a>
+	<div class="row justify-content-center">
+		<div class="col-md-4 d-flex align-items-center">
+			<i class="fas fa-user fa-5x me-3"></i>
+			<div>
+				<h4><?php echo $user_data['prenom_user'] . ' ' . $user_data['nom_user']; ?></h4>
+			</div>
+		</div>
+		<div class="col-md-6">
+			<div class="card">
+				<div class="card-body">
+					<table class="table">
+						<tbody>
+							<tr>
+								<td class="fs-4">Email</td>
+								<td class="fs-4"><?php echo $user_data['mail_user']; ?></td>
+							</tr>
+							<tr>
+								<td class="fs-4">Date de naissance</td>
+								<td class="fs-4"><?php echo $user_data['dtn_user']; ?></td>
+							</tr>
+							<tr>
+								<td class="fs-4">Niveau d'études</td>
+								<td class="fs-4"><?php echo $user_data['libelle_cursus']; ?></td>
+							</tr>
+						</tbody>
+					</table>
+					<a href="edit-profil.php" class="btn btn-primary"><i class="fas fa-pencil-alt"></i> Éditer</a>
+				</div>
+			</div>
 		</div>
 	</div>
 
