@@ -29,6 +29,7 @@ session_start();
 		<span style="width: calc(36px + 1rem)"></span>
 		<span style="width: calc(36px + 1rem)"></span>
 	</section>
+
 	<section class="d-flex justify-content-end">
 		<a href="edit-profil.php" class="btn btn-primary py-2 px-4">
 			<svg height="16" viewBox="0 0 8 8" width="16" fill="white	" xmlns="http://www.w3.org/2000/svg">

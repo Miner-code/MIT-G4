@@ -57,7 +57,7 @@ $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
                 <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control" abled>
                 
                 <label for="dtn_user">Date de naissance :</label>
-                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control">
+                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" disabled>
                 
                 <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
             </form>
