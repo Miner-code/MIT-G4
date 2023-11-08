@@ -10,19 +10,19 @@
             <!--menu item-->
             <ul>
                 <li class="nav-item">
-                    <a href="admin.php" class="nav-link d-flex align-items-center">
+                    <a href="admin.php"  class="nav-link d-flex align-items-center">
                         <div class="icon"><i class="fa-solid fa-house" ></i></div>
                         <span class="item">Dashboard</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="users" class="nav-link d-flex align-items-center">
+                    <a href="user.php"class="nav-link d-flex align-items-center">
                         <div class="icon"><img src="icone/person.svg"></div>
                         <span class="item">Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="etablissement" class="nav-link d-flex align-items-center">
+                    <a href="etablissement.php" class="nav-link d-flex align-items-center">
                         <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
                         <span class="item">Etablissement</span>
                     </a>
@@ -79,3 +79,4 @@ for (i = 0; i < listLink.length; i++){
     }
 }
 </script>
+
