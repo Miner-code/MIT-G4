@@ -4,18 +4,25 @@ include "include/is-connected.php";
 // Inclure le code de connexion à la base de données
 include "include/bdd.php";
 
-// Vérifier si le formulaire a été soumis
+//Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
     $newMail = $_POST['mail_user'];
     $newDtn = $_POST['dtn_user'];
+    $id_etab = $_POST['id_etab'];
+    $id_cursus = $_POST['id_cursus'];
+
 
     // Mettre à jour les données dans la base de données
-    $stmt = $bdd->prepare("UPDATE user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus INNER JOIN etablissement ON participer.id_etab = etablissement.id_etab SET mail_user = :newMail, dtn_user = :newDtn, nom_etab = :newSchool, libelle_cursus = :newEtude WHERE user.id_user = :id_user");
+    $stmt = $bdd->prepare("UPDATE user SET mail_user = :newMail, dtn_user = :newDtn WHERE user.id_user = :id_user");
     $stmt->bindParam(":newMail", $newMail);
     $stmt->bindParam(":newDtn", $newDtn);
-    $stmt->bindParam(":newSchool", $newSchool);
-    $stmt->bindParam(":newEtude", $newEtude);
+    $stmt->bindParam(":id_user", $_SESSION['id_user']);
+    $stmt->execute();
+
+    $stmt = $bdd->prepare("UPDATE participer SET id_etab = :id_etab, id_cursus = :id_cursus WHERE id_user = :id_user");
+    $stmt->bindParam(":id_etab", $id_etab);
+    $stmt->bindParam(":id_cursus", $id_cursus);
     $stmt->bindParam(":id_user", $_SESSION['id_user']);
     $stmt->execute();
 
@@ -45,9 +52,7 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php include "include/head.php"; ?>
 </head>
 <body>
-    <?php 
-    include "include/nav.php";
-    ?>
+    <?php include "include/nav.php"; ?>
 
     <section class="d-flex justify-content-between">
         <section class="rounded-circle p-3 bg-grey">
@@ -60,39 +65,45 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
         <span style="width: calc(36px + 1rem)"></span>
     </section>
 
-    <section class="row">
+    <form class="row" method="post">
         <section class="col-12 col-xl-6">
-            <form method="post">
+            <div class="form-group">
                 <label for="mail_user">Adresse mail :</label>
-                <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control">
-                
+                <input type="email" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control" required>
+            </div>
+            
+            <div class="form-group">
                 <label for="dtn_user">Date de naissance :</label>
-                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control">
-                
-                <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
-            </form>
+                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" required>
+            </div>
+            
+            <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
         </section>
 
         <section class="col-12 col-xl-6">
-            <label for="nom_etab">Ecole :</label>
-            <select name="nom_etab" id="">
-                <?php
-                for ($i=0; $i < count($etab_data); $i++) { 
-                    echo '<option value="'.$etab_data[$i]['id_etab'].'">'.$etab_data[$i]['nom_etab'].' - '.$etab_data[$i]['nom_etab'].'</option>';
-                }
-                ?>
-            </select>
+            <div class="form-group">
+                <label for="id_etab">Ecole :</label>
+                <select name="id_etab" id="id_etab" class="form-control">
+                    <?php
+                    foreach ($etab_data as $etab) {
+                        echo '<option value="'.$etab['id_etab'].'">'.$etab['nom_etab'].' - '.$etab['nom_ville'].'</option>';
+                    }
+                    ?>
+                </select>
+            </div>
             
-            <label for="libelle_cursus">Niveau d'études :</label>
-            <select name="libelle_cursus" id="">
-            <?php
-                for ($i=0; $i < count($cursus_data); $i++) { 
-                    echo '<option value="'.$cursus_data[$i]['libelle_cursus'].'">'.$cursus_data[$i]['libelle_cursus'].' - '.$cursus_data[$i]['libelle_cursus'].'</option>';
-                }
-                ?>
-            </select>
+            <div class="form-group">
+                <label for="id_cursus">Niveau d'études :</label>
+                <select name="id_cursus" id="id_cursus" class="form-control">
+                    <?php
+                    foreach ($cursus_data as $cursus) {
+                        echo '<option value="'.$cursus['id_cursus'].'">'.$cursus['libelle_cursus'].'</option>';
+                    }
+                    ?>
+                </select>
+            </div>
         </section>
-    </section>
+    </form>
 
     <?php include "include/footer.php"; ?>
 </body>
