@@ -45,9 +45,7 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <?php include "include/head.php"; ?>
 </head>
 <body>
-    <?php 
-    include "include/nav.php";
-    ?>
+    <?php include "include/nav.php"; ?>
 
     <section class="d-flex justify-content-between">
         <section class="rounded-circle p-3 bg-grey">
@@ -63,34 +61,42 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
     <section class="row">
         <section class="col-12 col-xl-6">
             <form method="post">
-                <label for="mail_user">Adresse mail :</label>
-                <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control">
+                <div class="form-group">
+                    <label for="mail_user">Adresse mail :</label>
+                    <input type="email" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control" required>
+                </div>
                 
-                <label for="dtn_user">Date de naissance :</label>
-                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control">
+                <div class="form-group">
+                    <label for="dtn_user">Date de naissance :</label>
+                    <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" required>
+                </div>
                 
                 <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
             </form>
         </section>
 
         <section class="col-12 col-xl-6">
-            <label for="nom_etab">Ecole :</label>
-            <select name="nom_etab" id="">
-                <?php
-                for ($i=0; $i < count($etab_data); $i++) { 
-                    echo '<option value="'.$etab_data[$i]['id_etab'].'">'.$etab_data[$i]['nom_etab'].' - '.$etab_data[$i]['nom_etab'].'</option>';
-                }
-                ?>
-            </select>
+            <div class="form-group">
+                <label for="nom_etab">Ecole :</label>
+                <select name="nom_etab" id="nom_etab" class="form-control">
+                    <?php
+                    foreach ($etab_data as $etab) {
+                        echo '<option value="'.$etab['id_etab'].'">'.$etab['nom_etab'].' - '.$etab['nom_ville'].'</option>';
+                    }
+                    ?>
+                </select>
+            </div>
             
-            <label for="libelle_cursus">Niveau d'études :</label>
-            <select name="libelle_cursus" id="">
-            <?php
-                for ($i=0; $i < count($cursus_data); $i++) { 
-                    echo '<option value="'.$cursus_data[$i]['libelle_cursus'].'">'.$cursus_data[$i]['libelle_cursus'].' - '.$cursus_data[$i]['libelle_cursus'].'</option>';
-                }
-                ?>
-            </select>
+            <div class="form-group">
+                <label for="libelle_cursus">Niveau d'études :</label>
+                <select name="libelle_cursus" id="libelle_cursus" class="form-control">
+                    <?php
+                    foreach ($cursus_data as $cursus) {
+                        echo '<option value="'.$cursus['libelle_cursus'].'">'.$cursus['libelle_cursus'].'</option>';
+                    }
+                    ?>
+                </select>
+            </div>
         </section>
     </section>
 
