@@ -89,11 +89,25 @@ body{
 
 /****************************************************/
 .container {
-    margin: 20px auto;
-    padding: 10px;
+   
+    padding: 2px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    width: 20%;
+    width: 9em;
     text-align: left;
+    background-color:  #d9d9d9;
 }
 
+.grid-container {
+    margin-left:13em ;
+    margin-top: 5em;
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
+    grid-gap: 20px; /* Espacement entre les éléments */
+}
+
+.bottom-container {
+    grid-column: 1 / -1; /* L'étend sur toutes les colonnes */
+    margin-top: 20px; /* Espacement par rapport aux conteneurs supérieurs */
+    
+}
