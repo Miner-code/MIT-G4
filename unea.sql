@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 08 nov. 2023 à 09:46
+-- Généré le : mer. 08 nov. 2023 à 10:17
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -178,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `prenom_user` varchar(50) DEFAULT NULL,
   `mail_user` varchar(50) DEFAULT NULL,
   `dtn_user` date DEFAULT NULL,
-  `mdp_user` varchar(50) DEFAULT NULL,
+  `mdp_user` varchar(65) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `img_user` varchar(250) DEFAULT NULL,
   `role_user` int DEFAULT NULL,
   PRIMARY KEY (`id_user`)
@@ -189,9 +189,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`) VALUES
-(1, 'Sardou', 'Michel', 'admin@gmail.com', '0000-00-00', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cd', 'upload/user/defaut.png', 1),
-(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '2020-12-12', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cd', 'upload/user/defaut.png', 0),
-(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '2001-01-01', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cd', 'upload/user/defaut.png', 0);
+(1, 'Sardou', 'Michel', 'admin@gmail.com', '0000-00-00', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1),
+(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '2020-12-12', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0),
+(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '2001-01-01', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0);
 
 -- --------------------------------------------------------
 
