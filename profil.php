@@ -1,5 +1,5 @@
 <?php
-session_start();
+	include "include/is-connected.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -13,7 +13,7 @@ session_start();
 	include "include/nav.php";
 	?>
 	<?php
-	$stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus WHERE user.id_user = :id_user");
+	$stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus INNER JOIN etablissement ON participer.id_etab = etablissement.id_etab WHERE user.id_user = :id_user");
 	$stmt->bindParam(":id_user", $_SESSION['id_user']);
 	$stmt->execute();
 	$user_data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -50,8 +50,8 @@ session_start();
 	</section>
 	<section class="row">
 		<section class="col-12 col-xl-6">
-			<label for="mail_user">Ecole :</label>
-			<input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" class="form-control" disabled>
+			<label for="nom_etab">Ecole :</label>
+			<input type="text" value="<?= $user_data['nom_etab'] ?>" id="nom_etab" class="form-control" disabled>
 		</section>
 		<section class="col-12 col-xl-6">
 			<label for="libelle_cursus">Niveau d'études :</label>
