@@ -29,6 +29,14 @@ $stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user 
 $stmt->bindParam(":id_user", $_SESSION['id_user']);
 $stmt->execute();
 $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+$stmt = $bdd->prepare("SELECT * FROM etablissement INNER JOIN ville ON etablissement.id_ville = ville.id_ville");
+$stmt->execute();   
+$etab_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+$stmt = $bdd->prepare("SELECT * FROM cursus");
+$stmt->execute();
+$cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 ?>
 <!DOCTYPE html>
 <html lang="fr">
@@ -56,10 +64,10 @@ $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
         <section class="col-12 col-xl-6">
             <form method="post">
                 <label for="mail_user">Adresse mail :</label>
-                <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control" abled>
+                <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control">
                 
                 <label for="dtn_user">Date de naissance :</label>
-                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" abled>
+                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control">
                 
                 <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
             </form>
@@ -67,10 +75,22 @@ $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         <section class="col-12 col-xl-6">
             <label for="nom_etab">Ecole :</label>
-            <input type="text" value="<?= $user_data['nom_etab'] ?>" id="nom_etab" class="form-control" abled>
+            <select name="nom_etab" id="">
+                <?php
+                for ($i=0; $i < count($etab_data); $i++) { 
+                    echo '<option value="'.$etab_data[$i]['id_etab'].'">'.$etab_data[$i]['nom_etab'].' - '.$etab_data[$i]['nom_etab'].'</option>';
+                }
+                ?>
+            </select>
             
             <label for="libelle_cursus">Niveau d'études :</label>
-            <input type="text" value="<?= $user_data['libelle_cursus'] ?>" id="libelle_cursus" class="form-control" abled>
+            <select name="libelle_cursus" id="">
+            <?php
+                for ($i=0; $i < count($cursus_data); $i++) { 
+                    echo '<option value="'.$cursus_data[$i]['libelle_cursus'].'">'.$cursus_data[$i]['libelle_cursus'].' - '.$cursus_data[$i]['libelle_cursus'].'</option>';
+                }
+                ?>
+            </select>
         </section>
     </section>
 
