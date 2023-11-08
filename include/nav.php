@@ -32,7 +32,7 @@ if (isset($_SESSION['role_user'])) {
 if (isset($_SESSION['id_user'])) {
 ?>
 						<li class="nav-item">
-							<a href="profil.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Mon Profil</span></a>
+							<a href="profil.php?id_user=<?=$_SESSION['id_user']?>" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Mon Profil</span></a>
 						</li>
 						<li class="nav-item">
 							<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Déconnection</span></a>
@@ -46,4 +46,27 @@ if (isset($_SESSION['id_user'])) {
 			</aside>
 <!-- fin navbar -->
 				<main class="col px-0 flex-grow-1">
+
+<?php
+if (strpos($_SERVER['REQUEST_URI'], 'profil') == false) {
+?>
+	<header class="bg-grey-light py-3">
+		<section class="input-group flex-nowrap w-50">
+			<button class="input-group-text btn" id="addon-wrapping">
+				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+					<path d="m0 0h24v24h-24z" fill="#fff"/><path d="m20.71 19.29-3.4-3.39a7.92 7.92 0 0 0 1.69-4.9 8 8 0 1 0 -8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zm-15.71-8.29a6 6 0 1 1 6 6 6 6 0 0 1 -6-6z" fill="#231f20"/>
+				</svg>
+			</button>
+			<input type="text" class="form-control" placeholder="Recherche">
+		</section>
+	</header>
+<?php
+} else {
+	?>
+	<div style="height:70px;"></div>
+	<?php
+}
+?>
+
+
 					<div class="container py-3 min-h-for-footer">

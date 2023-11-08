@@ -60,6 +60,5 @@ function onOtherEtab() {
     } else {
         $("#onOtherEtab").html("");
     }
-    $("#footer").css({"top": $(document).height()});
-    console.log($(document).height());
+    $("#footer").css({"top": $(document).height() - $("#footer").height()*2});
 }
