@@ -23,7 +23,12 @@
                     <a href="inscription.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark login-active">INSCRIPTION</a>
                     <a href="connexion.php" class="col-6 text-decoration-none text-center fs-3 py-3 grey-dark">CONNEXION</a>
                 </section>
-                <p class="text-center my-5">Découvrez la plateforme qui mets en relation les étudiants</p>
+                <section class="d-md-block d-none">
+                    <p class="text-center my-5">Découvrez la plateforme qui mets en relation les étudiants</p>
+                </section>
+                <section class="d-md-none d-block">
+                    <img src="assets/img/logoFondTransparent.png" alt="logo UNEA" class="img-fluid w-50 my-4" style="margin-left: 25%;"/>
+                </section>
                 <form method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
                     <section class="d-flex flex-md-row flex-column justify-content-center" id="take-width-here">
                         <section class="p-2 mb-3">
