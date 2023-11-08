@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "include/is-connected.php";
 ?>
 <!DOCTYPE html>
 <html lang="fr">
