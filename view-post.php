@@ -86,11 +86,7 @@ session_start();
 			<?php
 		}
 			?>
-
-
 		</section>
-
-
 		<?php require_once "include/footer.php"; ?>
 	</body>
 </html>
