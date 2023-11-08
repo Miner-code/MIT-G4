@@ -25,21 +25,9 @@ if (isset($_SESSION['role_user'])) {
   }
 }
 ?>
-
-<?php
-//  * Gestion connexion / deconnexion
-// TODO : page profil sur la search bar
-if (isset($_SESSION['id_user'])) {
-?>
-						<li class="nav-item">
-							<a href="profil.php?id_user=<?=$_SESSION['id_user']?>" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-user ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Mon Profil</span></a>
-						</li>
 						<li class="nav-item">
 							<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Déconnection</span></a>
 						</li>
-<?php
-}
-?>
 			      	</ul>
 			    	</b>
 			  	</nav>   
@@ -50,20 +38,28 @@ if (isset($_SESSION['id_user'])) {
 <?php
 if (strpos($_SERVER['REQUEST_URI'], 'profil') == false) {
 ?>
-	<header class="bg-grey-light py-3">
+	<header class="bg-grey-light py-3 d-flex flex-row">
+		<a href="profil.php?id_user=<?=$_SESSION['id_user']?>" class="rounded-circle p-3 bg-grey ms-3">
+			<svg height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
+				<path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z"/>
+			</svg>
+		</a>
+
 		<section class="input-group flex-nowrap w-50">
-			<button class="input-group-text btn" id="addon-wrapping">
+			<span class="input-group-text" id="addon-wrapping">
 				<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-					<path d="m0 0h24v24h-24z" fill="#fff"/><path d="m20.71 19.29-3.4-3.39a7.92 7.92 0 0 0 1.69-4.9 8 8 0 1 0 -8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zm-15.71-8.29a6 6 0 1 1 6 6 6 6 0 0 1 -6-6z" fill="#231f20"/>
+					<path d="m0 0h24v24h-24z" fill="#fff" opacity="0"/>
+					<path d="m20.71 19.29-3.4-3.39a7.92 7.92 0 0 0 1.69-4.9 8 8 0 1 0 -8 8 7.92 7.92 0 0 0 4.9-1.69l3.39 3.4a1 1 0 0 0 1.42 0 1 1 0 0 0 0-1.42zm-15.71-8.29a6 6 0 1 1 6 6 6 6 0 0 1 -6-6z" fill="#231f20"/>
 				</svg>
-			</button>
+			</span>
 			<input type="text" class="form-control" placeholder="Recherche">
 		</section>
+		<span></span>
 	</header>
 <?php
 } else {
 	?>
-	<div style="height:70px;"></div>
+	<div style="height:90px;"></div>
 	<?php
 }
 ?>
