@@ -30,10 +30,10 @@ include "include/is-connected.php";
 				$dataComm = $req->fetchAll(PDO::FETCH_ASSOC);
 				// var_dump($dataComm);
 
-				$req = $bdd->prepare("SELECT * FROM etablissement WHERE id_imp = ".$dataImpression['id_imp']);
+				$req = $bdd->prepare("SELECT * FROM etablissement JOIN participer ON etablissement.id_etab = participer.id_etab JOIN user ON user.id_user = participer.id_user WHERE user.id_user = " . $dataUser['id_user']);
 				$req->execute();
 				$dataEtab = $req->fetch(PDO::FETCH_ASSOC);
-				// var_dump($dataEtab);
+				//var_dump($dataEtab);
 			}
 
 			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
@@ -57,6 +57,10 @@ include "include/is-connected.php";
     		width: 180px;
    			height: 180px;
 			}
+
+			.image-arrondie{
+				border-radius: 50%;
+			}
     	</style>
 		<section class="d-flex justify-content-end w-100 mb-3">
 			<button class="btn btn-primary">
@@ -68,7 +72,7 @@ include "include/is-connected.php";
 			<section class="card p-2">
 				<section class="d-flex flex-row justify-content-between align-items-center">
 					<section class="rounded-circle p-3 width=36 height=36">
-						<img src="<?= $dataEtab['profil_etab'] ?>" class="image-reduite"/>
+						<img src="<?= $dataEtab['profil_etab'] ?>" class="image-reduite image-arrondie"/>
 					</section>
 					<h3 class="border-bottom border-dark"><?= $dataImpression['titre_imp'] ?></h3>
 					<span style="width: calc(36px + 1rem)"></span>
