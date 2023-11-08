@@ -29,6 +29,11 @@ include "include/is-connected.php";
 				$req->execute();
 				$dataComm = $req->fetchAll(PDO::FETCH_ASSOC);
 				// var_dump($dataComm);
+
+				$req = $bdd->prepare("SELECT * FROM etablissement WHERE id_imp = ".$dataImpression['id_imp']);
+				$req->execute();
+				$dataEtab = $req->fetch(PDO::FETCH_ASSOC);
+				// var_dump($dataEtab);
 			}
 
 			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
@@ -46,7 +51,12 @@ include "include/is-connected.php";
    			width: 100%;
     		resize: none;
     		border: none;
-			}	
+			}
+			
+			.image-reduite {
+    		width: 180px;
+   			height: 180px;
+			}
     	</style>
 		<section class="d-flex justify-content-end w-100 mb-3">
 			<button class="btn btn-primary">
@@ -57,10 +67,8 @@ include "include/is-connected.php";
 		<section class="d-flex flex-column">
 			<section class="card p-2">
 				<section class="d-flex flex-row justify-content-between align-items-center">
-					<section class="rounded-circle p-3 bg-grey">
-						<svg height="36" viewBox="0 0 8 8" width="36" xmlns="http://www.w3.org/2000/svg">
-							<path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z"/>
-						</svg>
+					<section class="rounded-circle p-3 width=36 height=36">
+						<img src="<?= $dataEtab['profil_etab'] ?>" class="image-reduite"/>
 					</section>
 					<h3 class="border-bottom border-dark"><?= $dataImpression['titre_imp'] ?></h3>
 					<span style="width: calc(36px + 1rem)"></span>
