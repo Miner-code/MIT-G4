@@ -11,9 +11,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $newDtn = $_POST['dtn_user'];
 
     // Mettre à jour les données dans la base de données
-    $stmt = $bdd->prepare("UPDATE user SET mail_user = :newMail, dtn_user = :newDtn WHERE id_user = :id_user");
+    $stmt = $bdd->prepare("UPDATE user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus INNER JOIN etablissement ON participer.id_etab = etablissement.id_etab SET mail_user = :newMail, dtn_user = :newDtn, nom_etab = :newSchool, libelle_cursus = :newEtude WHERE user.id_user = :id_user");
     $stmt->bindParam(":newMail", $newMail);
     $stmt->bindParam(":newDtn", $newDtn);
+    $stmt->bindParam(":newSchool", $newSchool);
+    $stmt->bindParam(":newEtude", $newEtude);
     $stmt->bindParam(":id_user", $_SESSION['id_user']);
     $stmt->execute();
 
@@ -23,7 +25,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Récupérer les données de l'utilisateur
-$stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus WHERE user.id_user = :id_user");
+$stmt = $bdd->prepare("SELECT * FROM user INNER JOIN participer ON user.id_user = participer.id_user INNER JOIN cursus ON cursus.id_cursus = participer.id_cursus INNER JOIN etablissement ON participer.id_etab = etablissement.id_etab WHERE user.id_user = :id_user");
 $stmt->bindParam(":id_user", $_SESSION['id_user']);
 $stmt->execute();
 $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -57,15 +59,15 @@ $user_data = $stmt->fetch(PDO::FETCH_ASSOC);
                 <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user" class="form-control" abled>
                 
                 <label for="dtn_user">Date de naissance :</label>
-                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" disabled>
+                <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" name="dtn_user" class="form-control" abled>
                 
                 <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
             </form>
         </section>
 
         <section class="col-12 col-xl-6">
-            <label for="mail_user">Ecole :</label>
-            <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" class="form-control" abled>
+            <label for="nom_etab">Ecole :</label>
+            <input type="text" value="<?= $user_data['nom_etab'] ?>" id="nom_etab" class="form-control" abled>
             
             <label for="libelle_cursus">Niveau d'études :</label>
             <input type="text" value="<?= $user_data['libelle_cursus'] ?>" id="libelle_cursus" class="form-control" abled>
