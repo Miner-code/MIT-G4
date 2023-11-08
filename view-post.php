@@ -11,14 +11,14 @@ include "include/is-connected.php";
 		<?php 
 			require_once "include/bdd.php";
 			require_once "include/nav.php";
-	
+			require_once "function/difDate.php";
 			if (!isset($_GET['id_impression'])) {
 				header('location: index.php');
 			} else {
 				$req = $bdd->prepare("SELECT * FROM impression WHERE id_imp =  ".$_GET['id_impression']);
 				$req->execute();
 				$dataImpression = $req->fetch(PDO::FETCH_ASSOC);
-				var_dump($dataImpression);
+				//var_dump($dataImpression);
 
 				$req = $bdd->prepare("SELECT * FROM user WHERE id_user = ".$dataImpression['id_user']);
 				$req->execute();
@@ -33,6 +33,21 @@ include "include/is-connected.php";
 
 			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
 		?>
+		<style>
+        	.rounded-textarea {
+    		border: 1px solid #ccc;
+    		border-radius: 10px;
+    		margin-top: 20px;
+    		padding: 10px;
+    		outline: none; /* Supprime l'effet de surlignage */
+			}
+
+			.rounded-textarea textarea {
+   			width: 100%;
+    		resize: none;
+    		border: none;
+			}	
+    	</style>
 		<section class="d-flex justify-content-end w-100 mb-3">
 			<button class="btn btn-primary">
 				modifier
@@ -62,26 +77,36 @@ include "include/is-connected.php";
 					<!-- utiliser diffDate avec des split pour separer date et heure -->
 				</section>
 			</section>
-		</section>	
+		</section>
+			<section class="rounded-textarea d-flex justify-content-between mb-3">
+    			<textarea id="textAreaComm" name="textAreaComm" rows="4" placeholder="Répondre..."></textarea>
+				<section class="d-flex justify-content-end w-5 h-5 mb-2">
+					<button class="btn btn-primary mx-2 my-3" alt="Bouton Envoyer">
+						<svg class="align-items-center" fill="white" viewBox="0 0 16 16" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
+							<path d="m16 1-1-1-15 6v2l7 1 1 7h2z">
+						</svg>
+    				</button>
+				</section>
+			</section>
 		<section class="d-flex flex-column">
 
 			<?php
-		for ($i=0; $i < count($dataComm); $i++) { 
+		for ($i=0; $i < count($dataComm); $i++) { 	
 			?>
 			<section>
 				<section class="d-flex flex-row justify-content-between align-items-center">
 					<section class="d-flex flex-row align-items-center">
 						<section class="rounded-circle p-2 bg-grey">
-							<svg height="18" viewBox="0 0 8 8" width="18" xmlns="http://www.w3.org/2000/svg">
+							<svg height="36" viewBox="0 0 8 8" width="36" xmlns="http://www.w3.org/2000/svg">
 								<path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z"/>
 							</svg>				
 						</section>
 						<h4 class="fs-6"><?= $dataUser['nom_user'].' '.$dataUser['prenom_user'] ?></h4>
 					</section>
-					<p><?= $dataComm[$i]['date_com'] ?></p>
+					<p><?= publieDepuis($dataComm[$i]['date_com']) ?></p>
 					<!-- utiliser diffDate avec des split pour separer date et heure -->
 				</section>
-				<section class="mx-3">
+				<section class="mx-3 mb-5">
 					<?= $dataComm[$i]['contenu_com'] ?>
 				</section>
 			</section>
