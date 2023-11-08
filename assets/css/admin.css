@@ -111,3 +111,35 @@ body{
     margin-top: 20px; /* Espacement par rapport aux conteneurs supérieurs */
     
 }
+
+
+/* page user admin */
+
+
+
+
+.container_user{
+    width:50%; /* Largeur du conteneur */
+    margin: 0 auto; /* Centrer le conteneur horizontalement */
+    margin-top: 2em ; /* Marge en haut du conteneur */
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #f2f2f2;
+    margin-top: 2em;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+    font-size: 20px; /* Taille de police plus petite */
+}
+
+th {
+    background-color: #ccc;
+  
+}
+

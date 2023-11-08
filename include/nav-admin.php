@@ -57,6 +57,12 @@
                         <span class="item">Cursus</span>
                     </a>
                 </li>
+                <li class="nav-item">
+                    <a href="deco" class="nav-link d-flex align-items-center">
+                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                        <span class="item">Deco</span>
+                    </a>
+                </li>
             </ul>
         </div>
         </div>
