@@ -1,5 +1,5 @@
             </div>
-            <div class="w-100 bg-grey d-flex justify-content-center footer">
+            <div class="w-100 bg-grey-light d-flex justify-content-center footer">
                 <a href="https://github.com/Miner-code/MIT-G4" target="_blank" class="m-4"><i class="fa-brands fa-github grey-dark" style="font-size: 3em;"></i></a>
             </div>
         </main>

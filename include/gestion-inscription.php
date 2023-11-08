@@ -48,7 +48,7 @@ if (isset($_POST['submit'])){
             $tmp_img = $_FILES['img_profil']['tmp_name'];
             move_uploaded_file($tmp_img, $chemin_image);
         }
-// ! CHANGER sha1
+        
         $mdp_user = hash('sha256', $_POST['password1']);
         
         //* Ajout bdd

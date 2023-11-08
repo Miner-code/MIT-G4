@@ -74,7 +74,13 @@
 }
 
 .min-h-for-footer {
-    min-height: calc(100vh - 100px);
+    min-height: calc(100vh - 244px);
+}
+
+@media (min-width: 768px) {
+    .min-h-for-footer {
+        min-height: calc(100vh - 190px);
+    }
 }
 
 .footer {
