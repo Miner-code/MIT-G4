@@ -1,5 +1,11 @@
 $(function() {
-    $("#section-whith-width-double").css("width", $("#take-width-here").width() * 2 + "px");
+    $("#section-whith-width-double").css("width", $("#take-width-here").width() + "px");
+    if ($(document).width() < 768) {
+        $("#section-cursus-checkbox").css("width", $("#take-width-here").width() + "px");
+    } else {
+        $("#section-cursus-checkbox").css("width", $("#take-width-here").width()/2 + "px");
+    }
+    $("#footer").css({"top": $(document).height() - $("#footer").height()*2});
 }); 
 
 //* script pour le choix de l'établissement
@@ -9,7 +15,7 @@ function onChangeEndCursus() {
         '<svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">'+
             '<path d="m0 0v2h7v-2zm0 3v4.91c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-4.91h-7zm1 1h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm-4 2h1v1h-1zm2 0h1v1h-1z"/>'+
         '</svg>'+
-        '<input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de début"  type="text" name="password2" required>'
+        '<input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de fin"  type="text" name="date_fin" required>'
     );
   } else {
     $("#onCursusEnd").html("");
@@ -20,7 +26,7 @@ function onOtherEtab() {
     if ($("#select_etab").val() === 'null') {
         $("#onOtherEtab").html(
             
-            '<section class="d-flex flex-row">'+
+            '<section class="d-flex flex-md-row flex-column">'+
                 '<section class="d-flex flex-column">'+
                     '<section class="p-2 mb-3">'+
                         '<svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">'+
@@ -54,5 +60,6 @@ function onOtherEtab() {
     } else {
         $("#onOtherEtab").html("");
     }
-    console.log($("body").height());
+    $("#footer").css({"top": $(document).height()});
+    console.log($(document).height());
 }
