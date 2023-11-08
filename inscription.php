@@ -25,8 +25,8 @@
                 </section>
                 <p class="text-center my-5">Découvrez la plateforme qui mets en relation les étudiants</p>
                 <form method="post" enctype="multipart/form-data" class="d-flex flex-column align-items-center">
-                    <section class="d-flex flex-row justify-content-around">
-                        <section class="d-flex flex-column">
+                    <section class="d-flex flex-row justify-content-center">
+                        <section class="d-flex flex-column" id="take-width-here">
                             <section class="p-2 mb-3">
                                 <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z"/>
@@ -45,32 +45,8 @@
                                 </svg>
                                 <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Mot de passe"  type="password" class="form-control" name="password1" required>
                             </section>
-                            <section class="p-2 mb-3">
-                                <svg class="position-absolute" height="24" width="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48h-192v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48v-144h-192zm144-208h-80v-48c0-25.6-22.4-48-48-48h-160c-25.6 0-48 22.4-48 48v48h-80c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0h-128v-32h128z"/>
-                                </svg>
-                <!-- !!! -->
-                                <select id="select_etab" class="form-select" name="id_etab" aria-label="Selectionné votre établissement" onchange="onOtherEtab()">
-                                    <option value="">sélectionné votre établissement</option>
-                                    <?php 
-                                    $req = $bdd->query("SELECT * FROM etablissement");
-                                    $dataEtab = $req->fetchAll();
-                                    foreach ($dataEtab as $li){
-                                        print('<option value="'.$li['id_etab'].'">'.$li['nom_etab'].'</option>');
-                                    }
-                                    ?>
-                                    <option value="null">autre</option>
-                                </select>
-                <!-- !!! -->
-                            </section>
-                            <section class="p-2 mb-3">
-                                <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m.09 0c-.06 0-.09.04-.09.09v7.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-7.81c0-.06-.04-.09-.09-.09h-6.81zm.91 1h5v2h-5zm0 3h1v1h-1zm2 0h1v1h-1zm2 0h1v3h-1zm-4 2h1v1h-1zm2 0h1v1h-1z"/>
-                                </svg>
-                <!-- !!! -->
-                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Secteur"  type="password" class="form-control" name="password1" required>
-                <!-- !!! -->
-                            </section>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+
                         </section>
                         <section class="d-flex flex-column">
                             <section class="p-2 mb-3">
@@ -83,7 +59,7 @@
                                 <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m0 0v2h7v-2zm0 3v4.91c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-4.91h-7zm1 1h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm-4 2h1v1h-1zm2 0h1v1h-1z"/>
                                 </svg>
-                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de naissance" type="date" name="dtn" value="<?php if(isset($_POST['dtn'])){ echo $dtn_user; } ?>">
+                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de naissance" type="text" name="dtn" value="<?php if(isset($_POST['dtn'])){ echo $dtn_user; } ?>">
                             </section>
                             <section class="p-2 mb-3">
                                 <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
@@ -91,22 +67,55 @@
                                 </svg>
                                 <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Confirmation"  type="password" class="form-control" name="password2" required>
                             </section>
+<!-- !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! -->
+                        </section>
+                    </section>
+
+
+
+                    <section class="d-flex flex-row p-2 mb-3" id="section-whith-width-double">
+                        <svg class="position-absolute" height="24" width="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg">
+                            <path d="m320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48h-192v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48v-144h-192zm144-208h-80v-48c0-25.6-22.4-48-48-48h-160c-25.6 0-48 22.4-48 48v48h-80c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0h-128v-32h128z"/>
+                        </svg>
+                        <select id="select_etab" class="form-select ps-input-svg border-bottom border-0 border-focus-bot" name="id_etab" aria-label="Selectionné votre établissement" onchange="onOtherEtab()">
+                            <option value="">sélectionné votre établissement</option>
+                            <?php 
+                            $req = $bdd->query("SELECT * FROM etablissement");
+                            $dataEtab = $req->fetchAll();
+                            foreach ($dataEtab as $li){
+                                print('<option value="'.$li['id_etab'].'">'.$li['nom_etab'].'</option>');
+                            }
+                            ?>
+                            <option value="null">autre</option>
+                        </select>
+                    </section>
+                    <section id="onOtherEtab"></section>
+
+
+
+                    <section class="d-flex flex-row">
+                        <section class="d-flex flex-column">                            
                             <section class="p-2 mb-3">
                                 <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="m3 0c-1.66 0-3 1.34-3 3 0 2 3 5 3 5s3-3 3-5c0-1.66-1.34-3-3-3zm0 1c1.11 0 2 .9 2 2 0 1.11-.89 2-2 2-1.1 0-2-.89-2-2 0-1.1.9-2 2-2z" transform="translate(1)"/>
+                                    <path d="m.09 0c-.06 0-.09.04-.09.09v7.81c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-7.81c0-.06-.04-.09-.09-.09h-6.81zm.91 1h5v2h-5zm0 3h1v1h-1zm2 0h1v1h-1zm2 0h1v3h-1zm-4 2h1v1h-1zm2 0h1v1h-1z"/>
                                 </svg>
-                <!-- !!! -->
-                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="ville"  type="password" class="form-control" name="password2" required>
-                <!-- !!! -->
+                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Secteur"  type="password" class="form-control" name="password1" required>
+                            </section>                           
+                            <section class="p-2 mb-3">
+                                <input class="form-check-input me-3" type="checkbox" id="cursus_fini" name="cursus_fini" onchange="onChangeEndCursus()">
+                                Diplome obtenu
                             </section>
+                        </section>
+                        <section class="d-flex flex-column">
                             <section class="p-2 mb-3">
                                 <svg class="position-absolute" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg">
                                     <path d="m0 0v2h7v-2zm0 3v4.91c0 .05.04.09.09.09h6.81c.05 0 .09-.04.09-.09v-4.91h-7zm1 1h1v1h-1zm2 0h1v1h-1zm2 0h1v1h-1zm-4 2h1v1h-1zm2 0h1v1h-1z"/>
                                 </svg>
-                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de diplôme"  type="date" name="password2" required>
+                                <input class="ps-input-svg border-bottom border-0 border-focus-bot" placeholder="Date de début"  type="text" name="password2" required>
                             </section>
+                            <section class="p-2 mb-3" id="onCursusEnd"></section>
                         </section>
-                    </section>
+                    </section>    
                     <button type="submit" class="btn btn-primary py-2 px-5 mt-2">Inscription</button>
                 </form>
                 <?php if(isset($mess)){echo $mess.'<hr/>';} ?>
@@ -121,97 +130,6 @@
                 </section>
             </section>
         </section>
-
-
-<!-- 
-                <form method="post" enctype="multipart/form-data">
-                    <h1>Inscription</h1>
-                    <div class="mb-2">
-                        <label for="nom" class="form-label">Nom</label>
-                        <input type="text" class="form-control" name="nom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['nom'])){ echo $nom_user; } ?>" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="prenom" class="form-label">Prenom</label>
-                        <input type="text" class="form-control" name="prenom" pattern="[a-zA-Zéè]{3,15}" value="<?php if(isset($_POST['prenom'])){ echo $prenom_user; } ?>" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="mail" class="form-label">Adresse Email</label>
-                        <input type="email" class="form-control" name="mail" pattern="[a-z0-9._%+-éèàùç]+@[a-z0-9.-]+\.[a-z]{2,3}" value="<?php if(isset($_POST['mail'])){ echo $mail_user; } ?>" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="dtn" class="form-label">Date de naissance (pas obligatoire)</label>
-                        <input type="date" class="form-control datepicker_input" name="dtn" value="<?php if(isset($_POST['dtn'])){ echo $dtn_user; } ?>">
-                    </div>
-                    <div class="mb-2">
-                        <label for="img_profil" class="form-label">Image (pas obligatoire)</label><br/>
-                        <input type="file" name="img_profil" onchange="loadFile(event)">
-                         -->
-                        <!-- Previsualisation de l'image qui vient d'arriver -->
-<!--                         
-                        <img style="height:auto; width:10em" id="output" />
-                    </div>
-                    <div class="mb-2">
-                        <label for="password1" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="password1" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="password2" class="form-label">Mot de passe</label>
-                        <input type="password" class="form-control" name="password2" required>
-                    </div>
-                    <div class="mb-2">
-                        <label for="cursus" class="form-label">Cursus</label>
-                        <select id="cursus" class="form-select" name='id_cursus' aria-label="Selectionné votre cursus">
-                            <?php 
-                            // $req = $bdd->query("SELECT * FROM cursus");
-                            // $dataCursus = $req->fetchAll();
-                            // foreach ($dataCursus as $li){
-                            //     print('<option value="'.$li['id_cursus'].'">'.$li['libele_cursus'].' '.$li['spe_cursus'].'</option>');
-                            // }
-                            ?>
-                        </select>
-                    </div>
-                    <div class="mb-2">
-                        <label for="date_debut" class="form-label">Date de début</label>
-                        <input type="date" class="form-control datepicker_input" name="date_debut" required>
-                    </div>
-                    <div class="mb-2 d-flex justify-content-center">
-                        <div class="form-check pe-2">
-                            <input class="form-check-input" type="radio" name="cursus_radio" id="cursus_en_cour" value="cursus_en_cour" onchange="onChangeEndCursus()" checked>
-                            <label class="form-check-label" for="cursus_en_cour">
-                                Etude en cours
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="cursus_radio" id="cursus_fini" value="cursus_fini" onchange="onChangeEndCursus()">
-                            <label class="form-check-label" for="cursus_fini">
-                                Etude terminé
-                            </label>
-                        </div>
-                    </div>
-                    <div id="onCursusEnd"></div>
-                    <div class="mb-2">
-                        <label for="select_etab" class="form-label">Etablissement</label>
-                        <select id="select_etab" class="form-select" name="id_etab" aria-label="Selectionné votre établissement" onchange="onOtherEtab()">
-                            <option value="">sélectionné votre établissement</option>
-                            <?php 
-                            // $req = $bdd->query("SELECT * FROM etablissement");
-                            // $dataEtab = $req->fetchAll();
-                            // foreach ($dataEtab as $li){
-                            //     print('<option value="'.$li['id_etab'].'">'.$li['nom_etab'].'</option>');
-                            // }
-                            ?>
-                            <option value="null">autre</option>
-                        </select>
-                    </div>
-                    <div id="onOtherEtab"></div>
-                    <button type="submit" name="submit" class="btn btn-primary">S'inscrire</button>
-                </form>
-                <?php
-                // echo $mes_error;
-                ?>
-                <hr/>
-                <a href="connexion.php">Vous avez déjà un compte, connectez-vous !</a> -->
-
 
         <script>
         //* script pour l'affichage automatique de l'image
