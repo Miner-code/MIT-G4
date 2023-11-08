@@ -12,13 +12,13 @@ session_start();
 			require_once "include/bdd.php";
 			require_once "include/nav.php";
 	
-			if (!isset($_GET['id'])) {
+			if (!isset($_GET['id_impression'])) {
 				header('location: index.php');
 			} else {
 				$req = $bdd->prepare("SELECT * FROM impression WHERE id_imp =  ".$_GET['id_impression']);
 				$req->execute();
 				$dataImpression = $req->fetch(PDO::FETCH_ASSOC);
-				// var_dump($dataImpression);
+				var_dump($dataImpression);
 
 				$req = $bdd->prepare("SELECT * FROM user WHERE id_user = ".$dataImpression['id_user']);
 				$req->execute();
@@ -30,12 +30,15 @@ session_start();
 				$dataComm = $req->fetchAll(PDO::FETCH_ASSOC);
 				// var_dump($dataComm);
 			}
+
+			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
 		?>
 		<section class="d-flex justify-content-end w-100 mb-3">
 			<button class="btn btn-primary">
 				modifier
 			</button>
 		</section>
+			<?php } ?>
 		<section class="d-flex flex-column">
 			<section class="card p-2">
 				<section class="d-flex flex-row justify-content-between align-items-center">
