@@ -1,5 +1,5 @@
 <?php
-session_start();
+include "include/is-connected.php";
 
 // Inclure le code de connexion à la base de données
 include "include/bdd.php";
