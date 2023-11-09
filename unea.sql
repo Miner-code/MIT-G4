@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 09 nov. 2023 à 12:52
--- Version du serveur :  5.7.31
--- Version de PHP : 7.3.21
+-- Généré le : jeu. 09 nov. 2023 à 22:07
+-- Version du serveur : 8.0.31
+-- Version de PHP : 8.0.26
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -29,23 +29,13 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `commentaire`;
 CREATE TABLE IF NOT EXISTS `commentaire` (
-  `id_com` int(11) NOT NULL AUTO_INCREMENT,
+  `id_com` int NOT NULL AUTO_INCREMENT,
   `contenu_com` text,
   `date_com` timestamp NOT NULL,
-  `id_imp` int(11) NOT NULL,
+  `id_imp` int NOT NULL,
   PRIMARY KEY (`id_com`),
   KEY `id_imp` (`id_imp`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=latin1;
-
---
--- Déchargement des données de la table `commentaire`
---
-
-INSERT INTO `commentaire` (`id_com`, `contenu_com`, `date_com`, `id_imp`) VALUES
-(4, 'contenu commentaire', '2023-11-07 15:37:07', 4),
-(7, 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi similique repudiandae eaque labore doloremque obcaecati magnam iste, soluta, minus id nostrum ratione. Fugit maxime molestiae vitae autem veritatis nesciunt aliquid eveniet quaerat quibusdam quis est, sit quod dolore magnam optio. Pariatur voluptatibus accusamus ipsum? Quas quod perspiciatis delectus beatae repellat?\r\n', '2023-11-07 15:50:43', 4),
-(8, 'yo ceci \'*est une test', '2023-11-07 15:50:43', 4),
-(9, '', '2023-11-09 11:48:19', 4);
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
 
@@ -55,18 +45,23 @@ INSERT INTO `commentaire` (`id_com`, `contenu_com`, `date_com`, `id_imp`) VALUES
 
 DROP TABLE IF EXISTS `cursus`;
 CREATE TABLE IF NOT EXISTS `cursus` (
-  `id_cursus` int(11) NOT NULL AUTO_INCREMENT,
+  `id_cursus` int NOT NULL AUTO_INCREMENT,
   `libelle_cursus` varchar(250) DEFAULT NULL,
   `spe_cursus` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_cursus`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `cursus`
 --
 
 INSERT INTO `cursus` (`id_cursus`, `libelle_cursus`, `spe_cursus`) VALUES
-(1, 'BTS SN', 'IR');
+(1, 'BTS SN', 'IR'),
+(2, 'BTS SIO', 'SLAM'),
+(3, 'BTS SIO', 'SISR'),
+(4, 'BTS SN', 'EC'),
+(5, 'INGE-1', 'WebMedia'),
+(6, 'INGE-1', 'Développement');
 
 -- --------------------------------------------------------
 
@@ -76,23 +71,24 @@ INSERT INTO `cursus` (`id_cursus`, `libelle_cursus`, `spe_cursus`) VALUES
 
 DROP TABLE IF EXISTS `etablissement`;
 CREATE TABLE IF NOT EXISTS `etablissement` (
-  `id_etab` int(11) NOT NULL AUTO_INCREMENT,
+  `id_etab` int NOT NULL AUTO_INCREMENT,
   `nom_etab` varchar(200) DEFAULT NULL,
   `adresse_etab` varchar(250) DEFAULT NULL,
   `profil_etab` varchar(500) DEFAULT NULL,
   `banniere_etab` varchar(500) DEFAULT NULL,
-  `id_ville` int(11) NOT NULL,
+  `id_ville` int NOT NULL,
   PRIMARY KEY (`id_etab`),
   KEY `id_ville` (`id_ville`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `etablissement`
 --
 
 INSERT INTO `etablissement` (`id_etab`, `nom_etab`, `adresse_etab`, `profil_etab`, `banniere_etab`, `id_ville`) VALUES
-(1, 'Institut G4 - Marseille', 'Marseille 13e', 'upload/user/Ecole.png', NULL, 1),
-(3, 'Saint Michel', 'rue de ta race', '', NULL, 19);
+(1, 'Institut G4 - Marseille', '21 Rue Marc Donadille, 13013 Marseille', 'upload/user/Ecole.png', NULL, 18),
+(3, 'Lycée Alphonse-Benoît', 'Cr Victor Hugo, 84800 L\'Isle-sur-la-Sorgue', 'upload/user/Ecole.png', NULL, 1),
+(6, 'Marie CURIE', '16 Bd Jeanne d Arc', 'upload/user/Ecole.png', NULL, 18);
 
 -- --------------------------------------------------------
 
@@ -102,23 +98,25 @@ INSERT INTO `etablissement` (`id_etab`, `nom_etab`, `adresse_etab`, `profil_etab
 
 DROP TABLE IF EXISTS `impression`;
 CREATE TABLE IF NOT EXISTS `impression` (
-  `id_imp` int(11) NOT NULL AUTO_INCREMENT,
+  `id_imp` int NOT NULL AUTO_INCREMENT,
   `titre_imp` varchar(250) DEFAULT NULL,
   `contenu_imp` text,
   `date_imp` timestamp NOT NULL,
-  `id_theme` int(11) NOT NULL,
-  `id_user` int(11) NOT NULL,
+  `id_theme` int NOT NULL,
+  `id_user` int NOT NULL,
   PRIMARY KEY (`id_imp`),
   KEY `id_theme` (`id_theme`),
   KEY `id_user` (`id_user`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `impression`
 --
 
 INSERT INTO `impression` (`id_imp`, `titre_imp`, `contenu_imp`, `date_imp`, `id_theme`, `id_user`) VALUES
-(4, 'Ecole', 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum recusandae explicabo nesciunt illo. Dolorem pariatur quis voluptatem quod, animi quaerat consectetur repellendus vero iste in, adipisci minima similique totam error ipsam maxime tempora? Ratione officiis architecto quo soluta nihil. Facilis facere deserunt architecto aliquam veniam magni, odit culpa, unde beatae debitis laborum! Earum, beatae ullam! Nostrum laboriosam quibusdam aspernatur, quisquam illum eligendi architecto id, nam sint ut similique saepe dolor modi inventore unde quis! Fugit velit, nemo quaerat officiis eum consectetur delectus laudantium?', '2023-11-07 13:45:50', 1, 1);
+(5, 'Institut G4, Marseille', 'Chez G4 on aime sortir des codes. Nous portons une attention toute particulière à la personnalité de nos étudiants et nous valorisons autant les résultats académiques de nos candidats que leurs compétences personnelles (soft skills).\r\nNégociation, esprit d’équipe, créativité, prise de décision, gestion du temps…\r\n\r\nAutant d’atouts primordiaux sur lesquels nous nous appuierons et développerons ensemble, pour faire de vous un élément clé dans votre futur entreprise. Nos différentes formations permettent de s’adapter à votre niveau d’étude, à vos envies futures et à vos caractéristiques personnelles.\r\n\r\nNotre mission, révéler et développer ce qui est unique chez vous, pour vous démarquer et vous aider à devenir qui vous êtes !', '2023-11-09 11:30:00', 6, 1),
+(9, 'Lycée Alphonse-Benoît', 'Le Lycée Alphonse Benoît est un lycée polyvalent public situé à L Isle-sur-la-Sorgue et faisant partie de l académie d Aix-Marseille. Il propose deux types de spécialités pour les BTS système numérique: Informatiques & Réseaux et Electroniques & Communications.', '2023-11-09 11:30:00', 4, 1),
+(10, 'Lycée Technologique Marie Curie, Marseille', 'Le lycée public Marie-Curie à Marseille est un lycée technique à vocation régionale localisé au cœur de la ville de Marseille. Il accueille 1 400 élèves et étudiants de la seconde jusqu au BTS voire licence pour certaines formations et même master.', '2023-11-09 11:30:00', 3, 1);
 
 -- --------------------------------------------------------
 
@@ -128,9 +126,9 @@ INSERT INTO `impression` (`id_imp`, `titre_imp`, `contenu_imp`, `date_imp`, `id_
 
 DROP TABLE IF EXISTS `participer`;
 CREATE TABLE IF NOT EXISTS `participer` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cursus` int(11) NOT NULL,
-  `id_etab` int(11) NOT NULL,
+  `id_user` int NOT NULL AUTO_INCREMENT,
+  `id_cursus` int NOT NULL,
+  `id_etab` int NOT NULL,
   `date_debut` varchar(10) DEFAULT NULL,
   `date_fin` varchar(10) DEFAULT NULL,
   PRIMARY KEY (`id_user`,`id_cursus`,`id_etab`),
@@ -144,9 +142,11 @@ CREATE TABLE IF NOT EXISTS `participer` (
 --
 
 INSERT INTO `participer` (`id_user`, `id_cursus`, `id_etab`, `date_debut`, `date_fin`) VALUES
-(1, 1, 1, '01/09/2023', '2023-09-02'),
-(9, 1, 3, '12/12/2020', '12/12/2022'),
-(10, 1, 3, '03/09/2023', NULL);
+(1, 2, 6, '01/09/2021', '01/06/2023'),
+(2, 1, 3, '01/09/2021', '01/06/2023'),
+(3, 3, 6, '01/09/2021', '01/06/2023'),
+(9, 6, 1, '01/09/2023', '01/09/2024'),
+(10, 6, 1, '01/09/2023', '01/09/2024');
 
 -- --------------------------------------------------------
 
@@ -156,18 +156,19 @@ INSERT INTO `participer` (`id_user`, `id_cursus`, `id_etab`, `date_debut`, `date
 
 DROP TABLE IF EXISTS `theme`;
 CREATE TABLE IF NOT EXISTS `theme` (
-  `id_theme` int(11) NOT NULL AUTO_INCREMENT,
+  `id_theme` int NOT NULL AUTO_INCREMENT,
   `libelle_theme` varchar(250) DEFAULT NULL,
   PRIMARY KEY (`id_theme`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `theme`
 --
 
 INSERT INTO `theme` (`id_theme`, `libelle_theme`) VALUES
-(1, 'Musique'),
-(2, 'Culture');
+(3, 'SLAM et SISR'),
+(4, 'Système Numérique'),
+(6, 'Développement Web et Management');
 
 -- --------------------------------------------------------
 
@@ -177,14 +178,14 @@ INSERT INTO `theme` (`id_theme`, `libelle_theme`) VALUES
 
 DROP TABLE IF EXISTS `user`;
 CREATE TABLE IF NOT EXISTS `user` (
-  `id_user` int(11) NOT NULL AUTO_INCREMENT,
+  `id_user` int NOT NULL AUTO_INCREMENT,
   `nom_user` varchar(50) DEFAULT NULL,
   `prenom_user` varchar(50) DEFAULT NULL,
   `mail_user` varchar(50) DEFAULT NULL,
   `dtn_user` varchar(10) DEFAULT NULL,
   `mdp_user` varchar(65) DEFAULT NULL,
   `img_user` varchar(250) DEFAULT NULL,
-  `role_user` int(11) DEFAULT NULL,
+  `role_user` int DEFAULT NULL,
   `newsLetter` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1;
@@ -194,11 +195,11 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`, `newsLetter`) VALUES
-(1, 'Sardou', 'Michel', 'admin@gmail.com', '01/01/1980', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
-(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '12/12/2020', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
-(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '01/01/2001', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
-(9, 'Dupond', 'Michel', 'michel@gmail.com', '12/12/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
-(10, 'Tartuf', 'Jacques', 'test2@gmail.com', '12/12/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 0);
+(1, 'RIEHL', 'Alan', 'admin@gmail.com', '21/04/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
+(2, 'GUY', 'Benjamin', 'test@gmail.com', '22/10/2003', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(3, 'VALLET', 'Hugo', 'hugo.vallet@gmail.com', '30/12/2001', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(9, 'MOSTEFAOUI', 'Boualem', 'boualem.mostefaoui@gmail.com', '30/10/2002', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(10, 'MONCHAUD', 'Ioamra', 'ioamra.monchaud@gmail.com', '12/08/1998', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 0);
 
 -- --------------------------------------------------------
 
@@ -208,11 +209,11 @@ INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user
 
 DROP TABLE IF EXISTS `ville`;
 CREATE TABLE IF NOT EXISTS `ville` (
-  `id_ville` int(11) NOT NULL AUTO_INCREMENT,
+  `id_ville` int NOT NULL AUTO_INCREMENT,
   `nom_ville` varchar(50) DEFAULT NULL,
   `cp_ville` decimal(5,0) DEFAULT NULL,
   PRIMARY KEY (`id_ville`)
-) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=latin1;
 
 --
 -- Déchargement des données de la table `ville`
@@ -220,8 +221,7 @@ CREATE TABLE IF NOT EXISTS `ville` (
 
 INSERT INTO `ville` (`id_ville`, `nom_ville`, `cp_ville`) VALUES
 (1, 'Isle-sur-la-Sorgue', '84800'),
-(18, 'Marseille', '13000'),
-(19, 'Marseille', '13000');
+(18, 'Marseille', '13000');
 
 --
 -- Contraintes pour les tables déchargées
