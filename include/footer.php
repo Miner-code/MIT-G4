@@ -10,13 +10,10 @@
 // * Gestion nav-link active 
 var current = window.location;
 var listLink = document.querySelectorAll('.nav-item a');
-var listIcon = document.querySelectorAll('.nav-item a div');
 var listSpan = document.querySelectorAll('.nav-item a span');
-console.log(listLink);
 for (i = 0; i < listLink.length; i++){
     if(listLink[i].href == current){
-        listLink[i].className = "nav-link d-flex align-items-center active";
-        listIcon[i].className = "grey-light";
+        listLink[i].className = "nav-link d-flex align-items-center fill-grey-light active";
         listSpan[i].className = "grey-light";
     }
 }

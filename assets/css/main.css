@@ -63,6 +63,14 @@
   background-color: var(--primary-color) !important;
 }
 
+.fill-grey-dark svg {
+    fill: var(--grey-dark);
+}
+
+.fill-grey-light svg {
+    fill: var(--grey-light);
+}
+
 /* HEADER */
 
 .ms-search-bar {
@@ -153,13 +161,14 @@
         margin-right: calc(5em + 16.667vw);
     }
 }
+
 .rounded-textarea {
     border: 1px solid #ccc;
     border-radius: 10px;
     margin-top: 20px;
     padding: 10px;
     outline: none;
-    }
+}
 
 .rounded-textarea textarea {
     width: 100%;
@@ -200,5 +209,24 @@
     .mx-content-imp {
         margin-left: 10em;
         margin-right: 10em;
+    }
+}
+
+.mx-card-home {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+@media (min-width: 768px) {
+    .mx-adapt {
+        margin-left: 5em;
+        margin-right: calc(5em + 25vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .mx-adapt {
+        margin-left: 5em;
+        margin-right: calc(5em + 16.667vw);
     }
 }

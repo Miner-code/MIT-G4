@@ -11,7 +11,22 @@
 			    	<b class="collapse navbar-collapse order-last w-100 links-size" id="nav">
 			      	<ul class="navbar-nav flex-column w-100">
 						<li class="nav-item">
-							<a href="home.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-house ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Acceuil</span></a>
+							<a href="home.php" class="nav-link d-flex align-items-center fill-grey-dark">
+								<svg class="ms-4 mt-2 me-3 mb-2" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m4 0-4 3h1v4h2v-2h2v2h2v-4.03l1 .03-4-3z"/></svg>
+								<span class="grey-dark">Acceuil</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="ecoles.php" class="nav-link d-flex align-items-center fill-grey-dark">
+								<svg class="ms-4 mt-2 me-3 mb-2" height="24" width="24" viewBox="0 0 512 512" xmlns="http://www.w3.org/2000/svg"><path d="m320 336c0 8.84-7.16 16-16 16h-96c-8.84 0-16-7.16-16-16v-48h-192v144c0 25.6 22.4 48 48 48h416c25.6 0 48-22.4 48-48v-144h-192zm144-208h-80v-48c0-25.6-22.4-48-48-48h-160c-25.6 0-48 22.4-48 48v48h-80c-25.6 0-48 22.4-48 48v80h512v-80c0-25.6-22.4-48-48-48zm-144 0h-128v-32h128z"/></svg>
+								<span class="grey-dark">Ecoles</span>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a href="themes.php" class="nav-link d-flex align-items-center fill-grey-dark">
+								<svg class="ms-4 mt-2 me-3 mb-2" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m0 0v8l2-2 2 2v-8z" transform="translate(2)"/></svg>
+								<span class="grey-dark">Themes</span>
+							</a>
 						</li>
 <?php
 // * If role_user === admin
@@ -26,7 +41,10 @@ if (isset($_SESSION['role_user'])) {
 }
 ?>
 						<li class="nav-item">
-							<a href="logout.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-power-off ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Déconnection</span></a>
+							<a href="logout.php" class="nav-link d-flex align-items-center fill-grey-dark">
+								<svg class="ms-4 mt-2 me-3 mb-2" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m3 0v1h4v5h-4v1h5v-7zm-1 2-2 1.5 2 1.5v-1h4v-1h-4z"/></svg>
+								<span class="grey-dark">Déconnection</span>
+							</a>
 						</li>
 			      	</ul>
 			    	</b>
