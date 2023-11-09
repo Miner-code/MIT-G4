@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : jeu. 09 nov. 2023 à 11:05
+-- Généré le : jeu. 09 nov. 2023 à 11:17
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -143,7 +143,7 @@ CREATE TABLE IF NOT EXISTS `participer` (
 --
 
 INSERT INTO `participer` (`id_user`, `id_cursus`, `id_etab`, `date_debut`, `date_fin`) VALUES
-(1, 1, 1, '2023-09-01', '2023-09-02'),
+(1, 1, 1, '01/09/2023', '2023-09-02'),
 (9, 1, 3, '12/12/2020', '12/12/2022'),
 (10, 1, 3, '03/09/2023', NULL);
 
@@ -193,9 +193,9 @@ CREATE TABLE IF NOT EXISTS `user` (
 --
 
 INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`, `newsLetter`) VALUES
-(1, 'Sardou', 'Michel', 'admin@gmail.com', '0000-00-00', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
-(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '2020-12-12', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
-(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '2001-01-01', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(1, 'Sardou', 'Michel', 'admin@gmail.com', '01/01/1980', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
+(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '12/12/2020', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '01/01/2001', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
 (9, 'Dupond', 'Michel', 'michel@gmail.com', '12/12/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
 (10, 'Tartuf', 'Jacques', 'test2@gmail.com', '12/12/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 0);
 
