@@ -62,7 +62,7 @@ if (strpos($_SERVER['REQUEST_URI'], 'profil') == false) {
 				<i class="fas fa-search"></i>
 			</button>
 			<div class="form-outline">
-				<input id="search-input" type="search" id="form1" class="form-control h-100" />
+				<input id="search-input" type="search" placeholder="Search ..." class="form-control h-100" />
 			</div>
 		</form>
 

@@ -43,7 +43,7 @@ include "include/is-connected.php";
     }
     ?>
 
-    <form id="formulaire" method="POST">
+    <form id="formulaire" method="POST" class="mx-adapt">
         <!-- ... Votre formulaire ici ... -->
         <section class="rounded-textarea d-flex justify-content-between mb-3">
             <textarea id="textAreaTitreImp" name="textAreaTitreImp" rows="1" placeholder="Titre de l'impression..."></textarea>

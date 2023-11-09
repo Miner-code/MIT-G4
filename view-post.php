@@ -35,9 +35,9 @@ include "include/is-connected.php";
 			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
 		?>
 			<section class="d-flex justify-content-end w-100 mb-3">
-				<button onclick="window.location.href = 'lien vers modification de fiche';" class="btn btn-primary" > 
+				<a href="edit-post.php?id_impression=<?=$_GET['id_impression']?>" class="btn btn-primary" > 
 					modifier
-				</button>
+				</a>
 			</section>
 				<?php } ?>
 			<section class="mx-adapt">
