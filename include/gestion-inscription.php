@@ -1,7 +1,6 @@
 <?php
 $mes_error = '';
 if (isset($_POST['submit'])){
-    var_dump($_POST);
     $validation = True;
 
     $nom_user = $_POST['nom'];
@@ -14,6 +13,11 @@ if (isset($_POST['submit'])){
         $date_fin = $_POST['date_fin'];
     } else {
         $date_fin = null;
+    }
+    if (isset($_POST['newsLetter'])) {
+        $newsLetter = 1;
+    } else {
+        $newsLetter = 0;
     }
     $id_etab = $_POST['id_etab'];
 
@@ -37,31 +41,21 @@ if (isset($_POST['submit'])){
     if($_POST['password1'] != $_POST['password2']){ $validation = False; $mes_error = '<br/>Les mots de passe ne corresponde pas.'; }
 
     if($validation == True){
-    //* Si il ni a pas d'image
+        //* Si il ni a pas d'image
         $chemin_image = 'upload/user/defaut.png';
-    //* Sinon
-        if($_FILES['img_profil']['name'] == ''){
-        //* Renommage de l'image et ajout du chemin
-            $file_name = $_FILES['img_profil']['name'];
-            $ext_img = ".".strtolower(substr(strrchr($file_name, "."), 1));
-            $chemin_image = "upload/user/".$nom_user.'-'.$prenom_user.$ext_img;
-            $tmp_img = $_FILES['img_profil']['tmp_name'];
-            move_uploaded_file($tmp_img, $chemin_image);
-        }
-        
         $mdp_user = hash('sha256', $_POST['password1']);
         
         //* Ajout bdd
-        $req = $bdd->prepare("INSERT INTO user (nom_user, prenom_user, mail_user, dtn_user, mdp_user, img_user) 
-            VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user)");
+        $req = $bdd->prepare("INSERT INTO user (nom_user, prenom_user, mail_user, dtn_user, mdp_user, img_user, role_user, newsLetter) 
+            VALUES (:nom_user, :prenom_user, :mail_user, :dtn_user, :mdp_user, :img_user, 0, :newsLetter)");
         $req->bindValue(':nom_user', $nom_user);
         $req->bindValue(':prenom_user', $prenom_user);
         $req->bindValue(':mail_user', $mail_user);
         $req->bindValue(':dtn_user', $dtn_user);
         $req->bindValue(':mdp_user', $mdp_user);
         $req->bindValue(':img_user', $chemin_image);
+        $req->bindValue(':newsLetter', $newsLetter);
         $req->execute();
-
         $id_user = $bdd->lastInsertId();
 
         if ($id_etab === 'null') {
@@ -89,6 +83,7 @@ if (isset($_POST['submit'])){
             $req->bindValue(':date_debut', $date_debut);
             $req->bindValue(':date_fin', $date_fin);
             $req->execute();
+            
         } else {
             $req = $bdd->prepare("INSERT INTO participer (id_user , id_cursus, id_etab, date_debut, date_fin) 
                 VALUES (:id_user , :id_cursus, :id_etab, :date_debut, :date_fin)");
