@@ -105,12 +105,14 @@ body{
     display: grid;
     grid-template-columns: 1fr 1fr; /* Deux colonnes égales */
     grid-gap: 20px; /* Espacement entre les éléments */
+    font-size: 20px;
 }
 
 .bottom-container {
     grid-column: 1 / -1; /* L'étend sur toutes les colonnes */
-    margin-top: 20px; /* Espacement par rapport aux conteneurs supérieurs */
-    
+    margin-top: 30px; /* Espacement par rapport aux conteneurs supérieurs */
+    text-align: center;
+    margin-left: 15em;
 }
 
 
@@ -157,4 +159,8 @@ input{
 button{
     background-color: #d9d9d9;
     border: none    ;
+}
+
+.dashboard{
+    text-align: center;
 }
