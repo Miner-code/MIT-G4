@@ -132,3 +132,17 @@
         width: 50% !important;
     }
 }
+
+/* LISTE IMPRESSIONS */
+
+.mx-content-imp {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    .mx-content-imp {
+        margin-left: 10em;
+        margin-right: 10em;
+    }
+}
