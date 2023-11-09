@@ -27,15 +27,10 @@ $id = $_GET["id"];
   ?>
 
   <section class="d-flex justify-content-between">
-    <section class="rounded-circle p-3 bg-grey">
-      <svg height="36" viewBox="0 0 8 8" width="36" xmlns="http://www.w3.org/2000/svg">
-        <path
-          d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z" />
-      </svg>
+    <section class="d-flex flex-row align-items-center">
+      <img class="rounded-circle" src="<?=$user_data['img_user']?>" alt="Photo de profil" style="width: 5em; height: 5em;">
+      <h2 class="ms-5"><?= $user_data['prenom_user'] . ' ' . $user_data['nom_user'] ?></h2>
     </section>
-    <h2><?= $user_data['prenom_user'].' '.$user_data['nom_user'] ?></h2>
-    <span style="width: calc(36px + 1rem)"></span>
-    <span style="width: calc(36px + 1rem)"></span>
   </section>
 
   <?php
@@ -50,23 +45,31 @@ $id = $_GET["id"];
 
   <section class="row">
     <section class="col-12 col-xl-6">
+    <div class="form-group mb-5">
       <label for="mail_user">Adresse mail :</label>
       <input type="text" value="<?= $user_data['mail_user'] ?>" id="mail_user" class="form-control" disabled>
+    </div>
     </section>
     <section class="col-12 col-xl-6">
+    <div class="form-group mb-5">
       <label for="dtn_user">Date de naissance :</label>
       <input type="text" value="<?= $user_data['dtn_user'] ?>" id="dtn_user" class="form-control" disabled>
+    </div>
     </section>
   </section>
 
   <section class="row">
     <section class="col-12 col-xl-6">
+    <div class="form-group mb-5">
       <label for="nom_etab">Ecole :</label>
       <input type="text" value="<?= $user_data['nom_etab'] ?>" id="nom_etab" class="form-control" disabled>
+    </div>
     </section>
     <section class="col-12 col-xl-6">
+    <div class="form-group mb-5">
       <label for="libelle_cursus">Niveau d'études :</label>
       <input type="text" value="<?= $user_data['libelle_cursus'] ?>" id="libelle_cursus" class="form-control" disabled>
+    </div>
     </section>
   </section>
 
