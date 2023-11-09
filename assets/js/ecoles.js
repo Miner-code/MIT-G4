@@ -30,7 +30,6 @@ function publieDepuis(datePublication) {
 
 
 async function onChangeSchool() {
-    console.log($("#select_etab").val());
     fetch('api.php?id_etab='+$("#select_etab").val())
         .then(res => res.text())
         .then((data) => {
@@ -57,7 +56,8 @@ async function onChangeSchool() {
             '</a>'
             }
 
-            $('#impression-by-theme').html(htmlData)
-
+            $('#impression-by-theme').html(htmlData);
+            $('#img-etab').attr("src", data[0]['profil_etab']);
+            $('#img-etab').removeClass( "d-none" ).addClass( "d-block");
         });
 }
