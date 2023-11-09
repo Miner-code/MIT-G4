@@ -12,7 +12,7 @@ include "include/is-connected.php";
 			require_once "include/bdd.php";
 			require_once "include/nav.php";
 			require_once "function/difDate.php";
-			
+
 			if (!isset($_GET['id_impression'])) {
 				header('location: index.php');
 			} else {
@@ -71,8 +71,8 @@ include "include/is-connected.php";
 				<form id="formulaire" method="POST" class="rounded-textarea d-flex justify-content-between mb-3">
 					<?php
 						try {
-							$nomCom = htmlspecialchars($_POST["textAreaComm"]);
-							$date_com = date('y-m-d h:i:s');
+							$nomCom = isset($_POST["textAreaComm"]) ? htmlspecialchars($_POST["textAreaComm"]) : "";
+git							$date_com = date('y-m-d h:i:s');
 							$id_imp = $dataImpression['id_imp'];
 
 							$req = $bdd->prepare("INSERT INTO `commentaire`(`contenu_com`, `date_com`, `id_imp`) VALUES ('$nomCom', '$date_com', '$id_imp');");
