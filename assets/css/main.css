@@ -114,3 +114,58 @@
         width: 50% !important;
     }
 }
+
+/* View-post */
+
+.mx-adapt {
+    margin-left: 5em;
+    margin-right: 5em;
+}
+
+@media (min-width: 768px) {
+    .mx-adapt {
+        margin-left: 5em;
+        margin-right: calc(5em + 25vw);
+    }
+}
+
+@media (min-width: 1200px) {
+    .mx-adapt {
+        margin-left: 5em;
+        margin-right: calc(5em + 16.667vw);
+    }
+}
+.rounded-textarea {
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin-top: 20px;
+    padding: 10px;
+    outline: none;
+    }
+
+.rounded-textarea textarea {
+    width: 100%;
+    resize: none;
+    border: none;
+}
+    
+.img-reduce {
+    width: 115px;
+    height: 115px;
+}
+
+.img-rounded{
+    border-radius: 50%;
+}
+
+.img-profileComm{
+    width: 40px;
+    height: 40px;
+}
+
+.btn-sqr {
+    width: 40px;
+    height: 40px; 
+    border-radius: 8px;
+    padding: 0;
+}
