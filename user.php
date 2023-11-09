@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="assets/css/admin.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 
+  <script src="js/admin.js"></script>
     <title>Document</title>
 </head>
 <body>
@@ -51,10 +52,23 @@
                 <td><?=$age ?>ans</td>
                 <td><?=$row["nom_etab"]?> </td>
                 <td><?= $row["nom_ville"] ?></td>
-                <td><img src="icone/menu.svg"></td>
+                <td><button id="menu" ><img src="icone/menu.svg"></button></td>
               </tr>
             <?php }
         ?>
     </table>
+    <div id=third>bonsoir</div>
+    <script>
+        const targetDiv = document.getElementById("third");
+const btn = document.getElementById("menu");
+btn.onclick = function () {
+  if (targetDiv.style.display !== "none") {
+    targetDiv.style.display = "none";
+  } else {
+    targetDiv.style.display = "block";
+  }
+};
+    </script>
+
     <?php ?>
  </div>

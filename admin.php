@@ -38,7 +38,7 @@ while ($row = $result_last->fetch(PDO::FETCH_ASSOC)) {
 
 ?>
 
-
+<center><h2 >Dashboard</h2></center>
 <div class="grid-container">
 <div class="container">
         <li>Nb users :<?=" ".$nombreUtilisateurs ?> </li>
@@ -47,7 +47,7 @@ while ($row = $result_last->fetch(PDO::FETCH_ASSOC)) {
     </div>
 
     <div class="container">
-        <li>Last post :<?=" post: ".$row["titre_imp"]." nom:".$row["nom_user"]." prenom".$row["prenom_user"] ; }?></li>
+        <li>Last post :<?=$row["titre_imp"]." ".$row["nom_user"]." ".$row["prenom_user"] ; }?></li>
        
     </div>
 
@@ -55,7 +55,7 @@ while ($row = $result_last->fetch(PDO::FETCH_ASSOC)) {
         <li>Evolution de visite du site </li>
     </div>
 </div>
- ?>
+ 
  
   
 

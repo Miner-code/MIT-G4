@@ -23,43 +23,43 @@
                 </li>
                 <li class="nav-item">
                     <a href="etablissement.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                        <div class="icon"><img src="icone/briefcase.svg"></i></div>
                         <span class="item">Etablissement</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="participation" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                    <a href="participer.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="icone/people.svg"></i></div>
                         <span class="item">Participation</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="impressions" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                    <a href="impression.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="icone/globe.svg"></div>
                         <span class="item">Impressions</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="commentaire" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                    <a href="commentaire.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="icone/share.svg"></div>
                         <span class="item">Commentaire</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="theme" class="nav-link d-flex align-items-center">
+                    <a href="theme.php" class="nav-link d-flex align-items-center">
                         <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
                         <span class="item">Theme</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="cursus" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                    <a href="cursus.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="icone/folder.svg"></div>
                         <span class="item">Cursus</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="deco" class="nav-link d-flex align-items-center">
-                        <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
+                    <a href="home.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="icone/enter-entrance.svg"></div>
                         <span class="item">Deco</span>
                     </a>
                 </li>
