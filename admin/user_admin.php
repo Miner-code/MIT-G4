@@ -55,17 +55,13 @@
 
         <?php
         foreach ($resultat as $row) {
-            $dateNaissance = $row['dtn_user'];
-            $aujourdhui = new DateTime();
-            $dateNaissance = new DateTime($dateNaissance);
-            $difference = $aujourdhui->diff($dateNaissance);
-            $age = $difference->y
+          
             ?>
                 <tr>
                 <td> <input name="nom" value=<?=$row["nom_user"]?>   id="info" disabled></input> </td>
                 <td><input name="prenom" value=<?=$row["prenom_user"] ?>  id="info" disabled></input> </td>
                 <td><input name="mail" value=<?=$row["mail_user"]?>  id="info" disabled></input></td>
-                <td><input name="age" value=<?=$age."ans" ?>  id="info" disabled></input></td>
+                <td><input name="age" value=<?=$row['dtn_user'] ?>  id="info" disabled></input></td>
                 <td><input name="nom_etab" value=<?=$row["nom_etab"]?>  id="info" disabled></input> </td>
                 <td><input name="nom_ville" value=<?= $row["nom_ville"] ?>  id="info" disabled></input></td>
                 <td><button id="menu" form="form" ><img src="../icone/paint-brush-alt.svg"></button><button type="submit" id="submit" form="form1" style="display: none;"><img src="../icone/check.svg"></button></td>
