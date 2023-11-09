@@ -128,19 +128,33 @@ body{
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #f2f2f2;
+    background-color: #d9d9d9;
     margin-top: 2em;
 }
 
 th, td {
-    border: 1px solid #ddd;
+    border: 1px solid #d9d9d9;
     padding: 8px;
     text-align: center;
     font-size: 20px; /* Taille de police plus petite */
 }
 
 th {
-    background-color: #ccc;
+    background-color: #d9d9d9;
+    
   
 }
 
+input{
+    border: none;
+    text-align: center;
+    font-size: 13px;
+    width: 150px;
+    background-color: #d9d9d9;
+    
+}
+
+button{
+    background-color: #d9d9d9;
+    border: none    ;
+}
