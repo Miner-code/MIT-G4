@@ -213,20 +213,20 @@
 }
 
 .mx-card-home {
-    margin-left: 5em;
-    margin-right: 5em;
+    margin-left: 2em;
+    margin-right: 2em;
 }
 
 @media (min-width: 768px) {
-    .mx-adapt {
-        margin-left: 5em;
-        margin-right: calc(5em + 25vw);
+    .mx-card-home {
+        margin-left: 2em;
+        margin-right: calc(2em + 25vw);
     }
 }
 
 @media (min-width: 1200px) {
-    .mx-adapt {
-        margin-left: 5em;
-        margin-right: calc(5em + 16.667vw);
+    .mx-card-home {
+        /* margin-left: 2em; */
+        margin-right: calc(0em + 16.667vw);
     }
 }
