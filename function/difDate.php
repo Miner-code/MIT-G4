@@ -5,10 +5,11 @@
         if (!$datePubliee) {
             return "Format de date invalide";
         }
-    
+        
         $maintenant = new DateTime();
+        //var_dump($maintenant);
         $intervalle = $maintenant->diff($datePubliee);
-    
+
         $intervalSpecs = [
             'an' => $intervalle->y,
             'mois' => $intervalle->m,
