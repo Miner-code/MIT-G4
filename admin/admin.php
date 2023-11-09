@@ -40,7 +40,8 @@ while ($row = $result_last->fetch(PDO::FETCH_ASSOC)) {
 
 ?>
 
-<center><h2 >Dashboard</h2></center>
+<h2 class="dashboard" >Dashboard</h2>
+
 <div class="grid-container">
 <div class="container">
         <li>Nb users :<?=" ".$nombreUtilisateurs ?> </li>
