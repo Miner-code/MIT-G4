@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : mer. 08 nov. 2023 à 10:17
+-- Généré le : mer. 08 nov. 2023 à 16:27
 -- Version du serveur : 8.0.31
 -- Version de PHP : 8.0.26
 
@@ -42,7 +42,7 @@ CREATE TABLE IF NOT EXISTS `commentaire` (
 --
 
 INSERT INTO `commentaire` (`id_com`, `contenu_com`, `date_com`, `id_imp`) VALUES
-(4, 'contenu commentaire', '0000-00-00 00:00:00', 4),
+(4, 'contenu commentaire', '2023-11-07 15:37:07', 4),
 (7, 'Lorem ipsum, dolor sit amet consectetur adipisicing elit. Modi similique repudiandae eaque labore doloremque obcaecati magnam iste, soluta, minus id nostrum ratione. Fugit maxime molestiae vitae autem veritatis nesciunt aliquid eveniet quaerat quibusdam quis est, sit quod dolore magnam optio. Pariatur voluptatibus accusamus ipsum? Quas quod perspiciatis delectus beatae repellat?\r\n', '2023-11-07 15:50:43', 4),
 (8, 'yo ceci \'*est une test', '2023-11-07 15:50:43', 4);
 
@@ -181,6 +181,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   `mdp_user` varchar(65) CHARACTER SET latin1 COLLATE latin1_swedish_ci DEFAULT NULL,
   `img_user` varchar(250) DEFAULT NULL,
   `role_user` int DEFAULT NULL,
+  `newsLetter` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`id_user`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=latin1;
 
@@ -188,10 +189,10 @@ CREATE TABLE IF NOT EXISTS `user` (
 -- Déchargement des données de la table `user`
 --
 
-INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`) VALUES
-(1, 'Sardou', 'Michel', 'admin@gmail.com', '0000-00-00', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1),
-(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '2020-12-12', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0),
-(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '2001-01-01', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0);
+INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`, `newsLetter`) VALUES
+(1, 'Sardou', 'Michel', 'admin@gmail.com', '0000-00-00', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
+(2, 'LENFOIRET', 'Heuss', 'test@gmail.com', '2020-12-12', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(3, 'Jackson', 'Michael', 'michael.jackson@gmail.com', '2001-01-01', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1);
 
 -- --------------------------------------------------------
 
