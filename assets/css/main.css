@@ -63,6 +63,24 @@
   background-color: var(--primary-color) !important;
 }
 
+/* HEADER */
+
+.ms-search-bar {
+    margin-right: 0;
+}
+
+@media (min-width: 768px) {
+    .ms-search-bar {
+        margin-right: 25vw;
+    }
+}
+
+@media (min-width: 1200px) {
+    .ms-search-bar {
+        margin-right: 16.667vw;
+    }
+}
+
 /* ROUNDED */
 
 .rounded-4 {
