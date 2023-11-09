@@ -72,7 +72,7 @@ include "include/is-connected.php";
 					<?php
 						try {
 							$nomCom = isset($_POST["textAreaComm"]) ? htmlspecialchars($_POST["textAreaComm"]) : "";
-git							$date_com = date('y-m-d h:i:s');
+							$date_com = date('y-m-d h:i:s');
 							$id_imp = $dataImpression['id_imp'];
 
 							$req = $bdd->prepare("INSERT INTO `commentaire`(`contenu_com`, `date_com`, `id_imp`) VALUES ('$nomCom', '$date_com', '$id_imp');");
