@@ -5,17 +5,17 @@ include "include/is-connected.php";
 include "include/bdd.php";
 
 // Vérifier si une nouvelle photo a été téléchargée
-if(isset($_FILES['photo_profil']) && $_FILES['photo_profil']['error'] == UPLOAD_ERR_OK){
+if(isset($_FILES['img_user']) && $_FILES['img_user']['error'] == UPLOAD_ERR_OK){
     $uploadDir = "upload/user/"; // Dossier où vous stockerez les photos
-    $uploadFile = $uploadDir . basename($_FILES['photo_profil']['name']);
-    $tmp_img = $_FILES['photo_profil']['tmp_name'];
+    $uploadFile = $uploadDir . basename($_FILES['img_user']['name']);
+    $tmp_img = $_FILES['img_user']['tmp_name'];
     move_uploaded_file($tmp_img, $uploadFile);
 
     // Déplacer le fichier téléchargé vers le dossier d'upload
     if (move_uploaded_file($tmp_img, $uploadFile)) {
         // Mettre à jour le chemin de la dans la base de données
-        $stmt = $bdd->prepare("UPDATE user SET photo_profil = photo_profil WHERE id_user = :id_user");
-        $stmt->bindParam(":photo_profil", $uploadFile);
+        $stmt = $bdd->prepare("UPDATE user SET img_user = img_user WHERE id_user = :id_user");
+        $stmt->bindParam(":img_user", $uploadFile);
         $stmt->bindParam(":id_user", $_SESSION['id_user']);
         $stmt->execute();
     }
@@ -73,31 +73,20 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
 <body>
   <?php include "include/nav.php"; ?>
 
-  <form class="row" method="post" enctype="multipart/form-data">
-    <section class="d-flex justify-content-between">
-      <section class="rounded-circle p-3 bg-grey">
-        <?php
-        // Afficher la photo de profil existante ou un avatar par défaut
-        if (isset($user_data['photo_profil'])) {
-          echo '<img src="' . $user_data['photo_profil'] . '" alt="Photo de profil" width="36" height="36">';
-        } else {
-          echo '<svg height="36" viewBox="0 0 8 8" width="36" xmlns="http://www.w3.org/2000/svg">
-                    <path d="m4 0c-1.1 0-2 1.12-2 2.5s.9 2.5 2 2.5 2-1.12 2-2.5-.9-2.5-2-2.5zm-2.09 5c-1.06.05-1.91.92-1.91 2v1h8v-1c0-1.08-.84-1.95-1.91-2-.54.61-1.28 1-2.09 1s-1.55-.39-2.09-1z" />
-                </svg>';
-        }
-        ?>
-      </section>
+  <form method="post" enctype="multipart/form-data">
+    <section class="d-flex flex-row align-items-center">
+      <img class="rounded-circle" src="<?=$user_data['img_user']?>" alt="Photo de profil" style="width: 5em; height: 5em;">
+      <h2 class="ms-5"><?= $user_data['prenom_user'] . ' ' . $user_data['nom_user'] ?></h2>
     </section>
 
-    <section class="col-12 col-xl-6">
+    <section>
       <div class="form-group mb-5">
-        <label for="photo_profil">Nouvelle photo de profil :</label>
-        <input type="file" id="photo_profil" name="photo_profil" accept="image/*">
+        <label for="img_user">Nouvelle photo de profil :</label>
+        <input type="file" id="img_user" name="img_user" accept="image/*">
       </div>
     </section>
-
+  <section class="row">
     <section class="col-12 col-xl-6">
-      <h2><?= $user_data['prenom_user'] . ' ' . $user_data['nom_user'] ?></h2>
       <div class="form-group mb-5">
         <label for="mail_user">Adresse mail :</label>
         <input type="email" value="<?= $user_data['mail_user'] ?>" id="mail_user" name="mail_user"
@@ -130,6 +119,8 @@ $cursus_data = $stmt->fetchAll(PDO::FETCH_ASSOC);
       </div>
       <button type="submit" class="btn btn-primary py-2 px-4">Mettre à jour le profil</button>
     </section>
+    
+  </section>
   </form>
 
   <?php include "include/footer.php"; ?>
