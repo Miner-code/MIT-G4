@@ -3,7 +3,7 @@
         <div class="sidebar">
            <!--profile image & text-->
            <div class="profile">
-                <img src="assets/img/logoFondTransparent.png" alt="profile_picture">
+                <img src="../assets/img/logoFondTransparent.png" alt="profile_picture">
                 <h3></h3>
                 <p></p>
             </div>
@@ -16,50 +16,50 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="user.php"class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/person.svg"></div>
+                    <a href="user_admin.php"class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/person.svg"></div>
                         <span class="item">Users</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="etablissement.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/briefcase.svg"></i></div>
+                    <a href="etablissement_admin.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/briefcase.svg"></i></div>
                         <span class="item">Etablissement</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="participer.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/people.svg"></i></div>
+                    <a href="participer_admin.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/people.svg"></i></div>
                         <span class="item">Participation</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="impression.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/globe.svg"></div>
+                    <a href="impression_admin.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/globe.svg"></div>
                         <span class="item">Impressions</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="commentaire.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/share.svg"></div>
+                    <a href="commentaire_admin.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/share.svg"></div>
                         <span class="item">Commentaire</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="theme.php" class="nav-link d-flex align-items-center">
+                    <a href="theme_admin.php" class="nav-link d-flex align-items-center">
                         <div class="icon"><i class="fa-solid fa-bookmark"></i></div>
                         <span class="item">Theme</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="cursus.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/folder.svg"></div>
+                    <a href="cursus_admin.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/folder.svg"></div>
                         <span class="item">Cursus</span>
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="home.php" class="nav-link d-flex align-items-center">
-                        <div class="icon"><img src="icone/enter-entrance.svg"></div>
+                    <a href="../home.php" class="nav-link d-flex align-items-center">
+                        <div class="icon"><img src="../icone/enter-entrance.svg"></div>
                         <span class="item">Deco</span>
                     </a>
                 </li>

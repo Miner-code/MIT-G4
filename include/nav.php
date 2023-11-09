@@ -34,7 +34,7 @@ if (isset($_SESSION['role_user'])) {
   if ($_SESSION['role_user'] === 1) {
 ?>
 						<li class="nav-item">
-							<a href="admin.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-briefcase ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Gestion Admin</span></a>
+							<a href="admin/admin.php" class="nav-link d-flex align-items-center"><div class="grey-dark"><i class="fa-solid fa-briefcase ms-4 mt-2 me-3 mb-2"></i></div><span class="grey-dark">Gestion Admin</span></a>
 						</li>
 <?php
   }
