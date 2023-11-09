@@ -21,7 +21,7 @@ include "include/is-connected.php";
     ?>
 
     <section class="d-flex justify-content-end">
-        <a href="" class="btn btn-primary mb-3 px-4">
+        <a href="create-post.php" class="btn btn-primary mb-3 px-4">
             <svg height="24" viewBox="0 0 8 8" width="24" fill="white" class="me-2" xmlns="http://www.w3.org/2000/svg"><path d="m3 0v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
             Nouveau
         </a>
