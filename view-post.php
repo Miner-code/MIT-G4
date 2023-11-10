@@ -10,7 +10,6 @@ include "include/is-connected.php";
 	<body>
 		<?php 
 			require_once "include/bdd.php";
-			require_once "include/nav.php";
 			require_once "function/difDate.php";
 			if (!isset($_GET['id_impression'])) {
 				header('location: index.php');
@@ -32,6 +31,24 @@ include "include/is-connected.php";
 				$dataEtab = $req->fetch(PDO::FETCH_ASSOC);
 				//var_dump($dataEtab);
 			}
+			if (isset($_POST['submit'])) {
+				if (isset($_POST["textAreaComm"])) {
+					$nomCom = htmlspecialchars($_POST["textAreaComm"]);
+					$date_com = date("y-m-d H:i:s");
+					
+					$id_imp = $dataImpression['id_imp'];
+	
+					$req = $bdd->prepare("INSERT INTO commentaire(contenu_com, date_com, id_imp) VALUES (:nomCom, :date_com, :id_imp);");
+					$req->bindValue(':nomCom', $nomCom);
+					$req->bindValue(':date_com', $date_com);
+					$req->bindValue(':id_imp', $id_imp);
+					$req->execute();
+					header('Location: ' . $_SERVER['PHP_SELF'].'id_impression='.$_GET['id_impression']);
+    				exit;
+				}
+			}
+			
+			require_once "include/nav.php";
 			if ($_SESSION['id_user'] == $dataImpression['id_user']) {
 		?>
 			<section class="d-flex justify-content-end w-100 mb-3">
@@ -62,25 +79,10 @@ include "include/is-connected.php";
 						</section>
 					</section>
 				</section>
-				<form id="formulaire" method="POST" class="rounded-textarea d-flex justify-content-between mb-3">
-					<?php
-						try {
-							$nomCom = isset($_POST["textAreaComm"]) ? htmlspecialchars($_POST["textAreaComm"]) : "";
-							$date_com = date("y-m-d H:i:s");
-							
-							$id_imp = $dataImpression['id_imp'];
-
-							$req = $bdd->prepare("INSERT INTO `commentaire`(`contenu_com`, `date_com`, `id_imp`) VALUES ('$nomCom', '$date_com', '$id_imp');");
-							$req->execute();
-							
-							//echo "Commentaire ajouté avec succès.";
-						} catch(PDOException $e) {
-							echo "Erreur : " . $e->getMessage();
-						}
-					?>
+				<form method="POST" class="rounded-textarea d-flex justify-content-between mb-3">
 					<textarea id="textAreaComm" name="textAreaComm" rows="4" placeholder="Répondre..."></textarea>
 					<section class="d-flex align-items-center justify-content-end w-5 h-5 mb-2">
-						<button type="submit" class="btn btn-primary mx-2 my-3 btn-sqr">
+						<button type="submit" name="submit" class="btn btn-primary mx-2 my-3 btn-sqr">
 							<svg class="align-items-center" fill="white" viewBox="0 0 16 16" width="24" height="24" xmlns="http://www.w3.org/2000/svg">
 								<path d="m16 1-1-1-15 6v2l7 1 1 7h2z"></path>
 							</svg>
