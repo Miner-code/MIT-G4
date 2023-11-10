@@ -29,3 +29,14 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine:
 ### Lancement du Projet
 
 Ouvrez votre navigateur et accédez à [http://localhost/MIT-G4](http://localhost/MIT-G4).
+
+### Utilisateur pour tester le projet
+
+mail: admin@gmail.com
+mot de passe: azerty
+
+mail: test@gmail.com
+mot de passe: azerty
+
+mail: test2@gmail.com
+mot de passe: azerty
