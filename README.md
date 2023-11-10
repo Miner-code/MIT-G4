@@ -32,11 +32,11 @@ Ouvrez votre navigateur et accédez à [http://localhost/MIT-G4](http://localhos
 
 ### Utilisateur pour tester le projet
 
-mail: admin@gmail.com
+mail: admin@gmail.com  
 mot de passe: azerty
 
-mail: test@gmail.com
+mail: test@gmail.com  
 mot de passe: azerty
 
-mail: test2@gmail.com
+mail: test2@gmail.com  
 mot de passe: azerty
