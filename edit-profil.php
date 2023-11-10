@@ -4,24 +4,6 @@ include "include/is-connected.php";
 // Inclure le code de connexion à la base de données
 include "include/bdd.php";
 
-// Vérifier si une nouvelle photo a été téléchargée
-if(isset($_FILES['img_user']) && $_FILES['img_user']['error'] == UPLOAD_ERR_OK){
-    $uploadDir = "upload/user/"; // Dossier où vous stockerez les photos
-    $uploadFile = $uploadDir . basename($_FILES['img_user']['name']);
-    $tmp_img = $_FILES['img_user']['tmp_name'];
-    move_uploaded_file($tmp_img, $uploadFile);
-
-    // Déplacer le fichier téléchargé vers le dossier d'upload
-    if (move_uploaded_file($tmp_img, $uploadFile)) {
-        // Mettre à jour le chemin de la dans la base de données
-        $stmt = $bdd->prepare("UPDATE user SET img_user = img_user WHERE id_user = :id_user");
-        $stmt->bindParam(":img_user", $uploadFile);
-        $stmt->bindParam(":id_user", $_SESSION['id_user']);
-        $stmt->execute();
-    }
-}
-
-
 //Vérifier si le formulaire a été soumis
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Récupérer les données du formulaire
@@ -44,6 +26,19 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bindParam(":id_user", $_SESSION['id_user']);
     $stmt->execute();
 
+    // Vérifier si une nouvelle photo a été téléchargée
+    if(isset($_FILES['img_user']) && $_FILES['img_user']['error'] == UPLOAD_ERR_OK){
+      $uploadDir = "upload/user/"; // Dossier où vous stockerez les photos
+      $uploadFile = $uploadDir . basename($_FILES['img_user']['name']);
+      $tmp_img = $_FILES['img_user']['tmp_name'];
+      move_uploaded_file($tmp_img, $uploadFile);
+
+      // Mettre à jour le chemin de la dans la base de données
+      $stmt = $bdd->prepare("UPDATE user SET img_user = :img_user WHERE id_user = :id_user");
+      $stmt->bindParam(":img_user", $uploadFile);
+      $stmt->bindParam(":id_user", $_SESSION['id_user']);
+      $stmt->execute();
+    }
     // Rediriger l'utilisateur vers la page de profil
     header("Location: profil.php?id=".$_SESSION['id_user']);
 }
