@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1:3306
--- Généré le : ven. 10 nov. 2023 à 18:24
+-- Généré le : ven. 10 nov. 2023 à 21:54
 -- Version du serveur :  5.7.31
 -- Version de PHP : 7.3.21
 
@@ -145,7 +145,7 @@ CREATE TABLE IF NOT EXISTS `participer` (
 
 INSERT INTO `participer` (`id_user`, `id_cursus`, `id_etab`, `date_debut`, `date_fin`) VALUES
 (1, 2, 6, '01/09/2021', '01/06/2023'),
-(2, 1, 3, '01/09/2021', '01/06/2023'),
+(2, 1, 1, '01/09/2021', '01/06/2023'),
 (3, 3, 1, '01/09/2021', '01/06/2023'),
 (9, 6, 1, '01/09/2023', '01/09/2024'),
 (10, 6, 1, '01/09/2023', '01/09/2024');
@@ -198,7 +198,7 @@ CREATE TABLE IF NOT EXISTS `user` (
 
 INSERT INTO `user` (`id_user`, `nom_user`, `prenom_user`, `mail_user`, `dtn_user`, `mdp_user`, `img_user`, `role_user`, `newsLetter`) VALUES
 (1, 'RIEHL', 'Alan', 'admin@gmail.com', '21/04/1999', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 1, 1),
-(2, 'GUY', 'Benjamin', 'test@gmail.com', '22/10/2003', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
+(2, 'GUY', 'Benjamin', 'test@gmail.com', '22/10/2003', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/FANCY-BEAR_AU.jpg', 0, 1),
 (3, 'VALLET', 'Hugo', 'test2@gmail.com', '30/12/2001', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
 (9, 'MOSTEFAOUI', 'Boualem', 'boualem.mostefaoui@gmail.com', '30/10/2002', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 1),
 (10, 'MONCHAU', 'Ioamra', 'ioamra.monchau@gmail.com', '12/08/1998', 'f2d81a260dea8a100dd517984e53c56a7523d96942a834b9cdc249bd4e8c7aa9', 'upload/user/defaut.png', 0, 0);
