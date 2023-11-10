@@ -19,12 +19,12 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine:
    ```bash
    git clone https://github.com/Miner-code/MIT-G4.git C:\wamp64\www\UNEA
 
-# Configuration de la Base de Données
+### Configuration de la Base de Données
 
 1. Ouvrez PhpMyAdmin dans votre navigateur en accédant à [http://localhost/phpmyadmin](http://localhost/phpmyadmin).
 2. Créez une nouvelle base de données avec le nom `unea`.
 3. Importez le fichier SQL unea.sql fourni avec le projet dans votre nouvelle base de données.
 
-# Lancement du Projet
+### Lancement du Projet
 
 Ouvrez votre navigateur et accédez à [http://localhost/MIT-G4](http://localhost/MIT-G4).
