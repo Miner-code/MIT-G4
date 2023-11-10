@@ -14,8 +14,10 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine:
 
 1. **Cloner le Projet**
 
+ Ouvrez votre terminal et exécutez la commande suivante pour cloner le projet directement dans le répertoire www de wampserveur, par defaut: `C:\wamp64\www\` :
+
    ```bash
-   git clone https://github.com/votre-utilisateur/votre-projet.git
+   git clone https://github.com/Miner-code/MIT-G4.git C:\wamp64\www\UNEA
 
 # Configuration de la Base de Données
 
@@ -25,5 +27,4 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine:
 
 # Lancement du Projet
 
-1. Placez le dossier cloné dans `C:\wamp64\www\`.
-2. Ouvrez votre navigateur et accédez à [http://localhost/MIT-G4](http://localhost/MIT-G4).
+Ouvrez votre navigateur et accédez à [http://localhost/MIT-G4](http://localhost/MIT-G4).
