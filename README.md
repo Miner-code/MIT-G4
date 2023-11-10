@@ -18,6 +18,7 @@ Assurez-vous d'avoir les éléments suivants installés sur votre machine:
 
    ```bash
    git clone https://github.com/Miner-code/MIT-G4.git C:\wamp64\www\UNEA
+   ```
 
 ### Configuration de la Base de Données
 
