@@ -33,7 +33,7 @@ if (isset($_POST['submit'])){
     }
 
     //* Vérification des doublons d'adresse mail
-    $req = $bdd->prepare("SELECT * FROM user WHERE mail = '$mail_user'");
+    $req = $bdd->prepare("SELECT * FROM user WHERE mail_user = '$mail_user'");
     $req->execute();
     $result = $req->rowCount();
     if($result > 0){ $validation = False; $mes_error = '<br/>Cette adresse mail est déjà utilisé.'; }
