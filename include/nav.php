@@ -43,7 +43,7 @@ if (isset($_SESSION['role_user'])) {
 						<li class="nav-item">
 							<a href="logout.php" class="nav-link d-flex align-items-center fill-grey-dark">
 								<svg class="ms-4 mt-2 me-3 mb-2" height="24" viewBox="0 0 8 8" width="24" xmlns="http://www.w3.org/2000/svg"><path d="m3 0v1h4v5h-4v1h5v-7zm-1 2-2 1.5 2 1.5v-1h4v-1h-4z"/></svg>
-								<span class="grey-dark">Déconnection</span>
+								<span class="grey-dark">Déconnexion</span>
 							</a>
 						</li>
 			      	</ul>
